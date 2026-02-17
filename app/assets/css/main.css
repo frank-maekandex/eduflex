@@ -1,0 +1,23 @@
+
+@import "tw-animate-css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background;
+  }
+
+  .my_container{
+    @apply lg:max-w-[85%] mx-auto;
+  }
+
+}
+
+.swiper {
+  --swiper-pagination-color: white;
+  --swiper-pagination-bullet-inactive-color: white;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+}
