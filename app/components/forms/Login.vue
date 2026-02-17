@@ -16,7 +16,7 @@ const props = defineProps<{
 }>()
 
 const submit = () => {
-  navigateTo('/dashboard', {
+  navigateTo('/dashboard/parent', {
     replace: true, // Prevents user from going back to the form
     external: false // Set to true if navigating to a different website
   })

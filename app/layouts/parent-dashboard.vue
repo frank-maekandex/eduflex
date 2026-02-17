@@ -5,6 +5,11 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/components/ui/avatar'
 </script>
 
 <template>
@@ -15,7 +20,14 @@ import {
         <SidebarTrigger class="-ml-1 text-primary" />
         <Separator orientation="vertical" class="mr-2 w- h-4 bg-background" />
         <div>
-          <h2 class="flex items-center gap-2 font-semibold text-base">Welcome Back Franklin <Icon name="mdi:hand-wave" class="size-5"/></h2>
+          <h2 class="flex items-center gap-2 font-semibold text-base lg:text-lg">
+            <span>{{ $route.meta.title }} {{ $route.meta.userName }}</span>
+            <Icon 
+              v-if="$route.meta.icon" 
+              :name="($route.meta.icon as string)" 
+              class="size-5" 
+            />
+          </h2>
         </div>
         <div class="h-full ml-auto flex items-center gap-4">
           <span class="flex size-10 items-center justify-center rounded-full bg-background">

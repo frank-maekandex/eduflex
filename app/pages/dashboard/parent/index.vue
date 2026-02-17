@@ -10,6 +10,24 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
+type LoanStatus = 'Pending' | 'Active' | 'Inactive'
+
+interface Student {
+  id: string
+  name: string
+  school: string
+  grade: string
+  avatar: string
+  loanStatus: LoanStatus
+}
+
+definePageMeta({
+    layout: "parent-dashboard",
+    title: "Welcome Back",
+    userName: "Franklin",
+    icon: "mdi:hand-wave"
+})
+
 const histories = [
   {
     "id": "tx_001",
@@ -58,12 +76,53 @@ const histories = [
     "amount": 15000,
     "currency": "NGN",
     "status": "Failed"
+  },
+    {
+    "id": "tx_007",
+    "description": "Manual Wallet Top-Up",
+    "date": "25 Sep 2025",
+    "amount": 15000,
+    "currency": "NGN",
+    "status": "Failed"
+  },
+  {
+    "id": "tx_008",
+    "description": "Loan Disbursement Received",
+    "date": "18 Sep 2025",
+    "amount": 120000,
+    "currency": "NGN",
+    "status": "Successful"
   }
 ]
 
-definePageMeta({
-    layout: "parent-dashboard"
-})
+const studentData = [
+  {
+    "id": "std_001",
+    "name": "David Michael",
+    "school": "Sunrise Academy",
+    "grade": "JSS 1",
+    "avatar": "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg",
+    "loanStatus": "Active"
+  },
+  {
+    "id": "std_002",
+    "name": "Sarah Michael",
+    "school": "Sunrise Academy",
+    "grade": "Primary 4",
+    "avatar": "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg",
+    "loanStatus": "Inactive"
+  },
+  {
+    "id": "std_003",
+    "name": "Samuel Michael",
+    "school": "Springfield High",
+    "grade": "SS 2",
+    "avatar": "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg",
+    "loanStatus": "Active"
+  }
+]
+
+const students = ref<Student[]>(studentData as Student[])
 
 </script>
 
@@ -82,14 +141,14 @@ definePageMeta({
               <span class="text-xs font-thin flex items-center gap-2">
                 Wallet Balance <Icon name="lucide:eye" class="size-4" />
               </span>
-              <h2 class="text-xl font-bold">₦ 240,000.000</h2>
+              <h2 class="text-xl font-bold">{{displayCurrency(Number(240000000), "NGN")}}</h2>
               <p class="text-[10px] font-thin italic">Update 5mins ago</p>
             </div>
           </Card>
 
             <WalletCard 
                 title="Active Loan Balance"
-                amount="₦50,000.00"
+                :amount="displayCurrency(Number(50000), 'NGN')"
                 icon-name="solar:banknote-2-bold"
                 icon-color-class="text-red-500"
                 icon-bg-class="bg-red-100/80"
@@ -122,22 +181,22 @@ definePageMeta({
                     View All Transactions
                 </Button>
            </div>
-           <div className="w-full min-h-[55vh] flex flex-col items-center justify-between overflow-x-auto">
+           <div className="w-full min-h-[50vh] flex flex-col items-center justify-between overflow-x-auto">
                 <Table>
                     <TableHeader>
-                        <TableRow className="bg-background">
-                            <TableHead className="capitalize">Description</TableHead>
-                            <TableHead className='capitalize'>Date</TableHead>
-                            <TableHead className='capitalize'>Amount</TableHead>
-                            <TableHead className="capitalize">Status</TableHead>
+                        <TableRow className="bg-background text-left">
+                            <TableHead className="capitalize p-3 text-gray-100">Description</TableHead>
+                            <TableHead className='capitalize p-3 text-gray-100'>Date</TableHead>
+                            <TableHead className='capitalize p-3 text-gray-100'>Amount</TableHead>
+                            <TableHead className="capitalize p-3 text-gray-100">Status</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         <TableRow v-for="history in histories" :key="history?.id">
-                            <TableCell class="capitalize font-semibold"> {{ history.description }}</TableCell>
-                            <TableCell class="capitalize font-semibold">{{ history?.date }}</TableCell>
-                            <TableCell class="capitalize font-semibold">{{ history?.amount }}</TableCell>
-                            <TableCell class="capitalize font-semibold">{{ history?.status }}</TableCell>
+                            <TableCell class="capitalize"> {{ ReduceTextLength(history.description, 40) }}</TableCell>
+                            <TableCell class="capitalize">{{ history?.date }}</TableCell>
+                            <TableCell class="capitalize">{{ displayCurrency(Number(history?.amount), 'NGN') }}</TableCell>
+                            <TableCell class="capitalize"><TransactionStatus :status="history?.status" /></TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
@@ -158,36 +217,50 @@ definePageMeta({
                     </p>
                     <div class="mt-2">
                     <p class="text-xs text-gray-500">Remaining Balance:</p>
-                    <p class="font-bold text-xl">₦50,000</p>
+                    <p class="font-bold text-xl">{{ displayCurrency(Number(50000), 'NGN') }}</p>
                     </div>
                 </div>
 
                 <div class="p-2 flex-shrink-0">
                     <ve-progress
-                    :progress="70" 
-                    :size="130" 
-                    color="#10b981"
-                    empty-color="#f1f5f9"
-                    :thickness="12"
-                    empty-thickness="12"
-                    animation="rs 1000 500"
+                        :progress="70" 
+                        :size="130" 
+                        color="#10b981"
+                        empty-color="#f1f5f9"
+                        :thickness="12"
+                        empty-thickness="12"
+                        animation="rs 1000 500"
                     >
-                    <span class="text-xl font-bold text-[#1C274D]">
-                        70%
-                    </span>
+                        <span class="text-xl font-bold text-[#1C274D]">
+                            70%
+                        </span>
                     </ve-progress>
                 </div>
             </div>
         </Card>
 
-        <Card class="bg-white rounded-2xl p-6">
+        <Card class="bg-white rounded-2xl border-none p-4">
           <div class="flex justify-between items-center mb-4">
-             <h3 class="font-bold">Students Summary</h3>
-             <Button size="sm" class="bg-[#1e3a8a] rounded-full">Add Students</Button>
+             <h3 class="font-semibold text-sm">Students Summary</h3>
+             <Button size="sm">Add Students</Button>
           </div>
-          <StudentList />
-          <Button class="w-full mt-6 bg-[#1e3a8a] h-12 rounded-xl">Apply For Loan Now</Button>
+          <div class="flex flex-col">
+                <ParentStudentSummaryCard
+                    v-for="student in students" 
+                    :key="student.id"
+                    :name="student.name"
+                    :school="student.school"
+                    :grade="student.grade"
+                    :avatar="student.avatar"
+                    :loan-status="student.loanStatus"
+                />
+            </div>
+            <Button class="w-full mt-4">Apply For Loan Now</Button>
         </Card>
+
+        <div class="w-full h-42 rounded-3xl border border-gray-border overflow-hidden">
+            <NuxtImg src="/help.png" class="w-full h-full"/>
+        </div>
       </div>
 
     </div>
