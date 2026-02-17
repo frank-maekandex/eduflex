@@ -62,7 +62,7 @@ const isPageActive = (itemUrl: string) => {
   
   // For other items, highlight if the path starts with that URL 
   // (e.g., /dashboard/parent/settings/profile keeps 'Settings' active)
-  return route.path.startsWith(itemUrl)
+  return route?.path?.startsWith(itemUrl)
 }
 
 </script>
