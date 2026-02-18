@@ -21,11 +21,11 @@
           </li>
         </ul>
 
-        <Button 
-          @click="$emit('action')"
-        >
-          {{ buttonText }}
-        </Button>
+        <NuxtLink :to="link" class="w-full">
+           <Button>
+              {{ buttonText }}
+           </Button>
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -37,6 +37,7 @@ defineProps({
   subtitle: { type: String, default: 'Designed for Parents Who Need Payment Flexibility.' },
   imageSrc: { type: String, default: '/paarent.png' },
   buttonText: { type: String, default: 'Continue' },
+  link: { type: String, default: '/' },
   features: {
     type: Array,
     default: () => [
@@ -47,5 +48,4 @@ defineProps({
   }
 });
 
-defineEmits(['action']);
 </script>

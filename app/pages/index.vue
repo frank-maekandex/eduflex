@@ -5,7 +5,7 @@
       title="For Parents"
       button-text="Continue as Parent"
       image-src="/parent.png"
-      @action="handleParentClick"
+      link="/parent"
     />
     <ImageCard 
       title="For Schools"
@@ -13,7 +13,7 @@
       button-text="Continue as School"
       image-src="/school.png"
       :features="schoolFeatures" 
-      @action="handleSchoolClick"
+      link="/school"
     />
   </div>
 </template>
@@ -26,13 +26,5 @@
     "Track disbursements, view payment history, and manage your EduFlex wallet seamlessly."
   ];
 
-  const handleParentClick = () => {
-    console.log("Parent route triggered!");
-    // navigateTo('/auth/parent') 
-  };
-
-  const handleSchoolClick = () => {
-    console.log("School route triggered!");
-  };
 </script>
 

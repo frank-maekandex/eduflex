@@ -17,9 +17,11 @@
       <p class="text-white text-xl md:text-2xl mb-6 max-w-[500px]">
         Pay school fees easily, get instant school payments, and grow trust with lenders.
       </p>
-      <Button variant="destructive" class="w-fit">
-        Get Started
-      </Button>
+      <NuxtLink to="/onboarding" class="w-fit">
+        <Button variant="destructive">
+          Get Started
+        </Button>
+      </NuxtLink>
     </div>
   </div>
 </template>
