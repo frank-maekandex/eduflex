@@ -25,7 +25,7 @@ defineProps<Props>()
         </Avatar>
       
       <div class="flex flex-col">
-        <h4 class="font-bold text-sm">{{ name }}</h4>
+        <h4 class="font-semibold text-sm">{{ name }}</h4>
         <p class="text-[10px] text-gray-100 italic">
           {{ school }}<span class="mx-1">•</span>{{ grade }}
         </p>

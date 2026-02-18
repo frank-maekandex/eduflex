@@ -14,7 +14,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <Card class="bg-white p-6 rounded-2xl flex items-center gap-4 border-none">
+    <Card class="bg-white p-6 rounded-2xl flex items-center gap-4 border-none h-[105px]">
         <div class="size-14 rounded-xl flex items-center justify-center" :class="iconBgClass">
             <Icon 
                 :name="iconName" 

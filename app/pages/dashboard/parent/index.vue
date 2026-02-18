@@ -133,7 +133,7 @@ const students = ref<Student[]>(studentData as Student[])
       <div class="col-span-12 lg:col-span-8 space-y-6">
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Card class="bg-primary text-white p-4 rounded-2xl border-none overflow-hidden flex flex-row items-center gap-4">
+          <Card class="bg-primary text-white p-4 rounded-2xl border-none overflow-hidden flex flex-row items-center gap-4 h-[105px]">
             <div class="size-14 bg-white rounded-xl flex items-center justify-center">
                <Icon name="solar:banknote-2-bold" class="text-primary size-7" />
             </div>
@@ -206,7 +206,7 @@ const students = ref<Student[]>(studentData as Student[])
 
       <div class="col-span-12 lg:col-span-4 space-y-6">
         
-        <Card class="bg-white p-4 rounded-2xl border-none flex flex-col items-center">
+        <Card class="bg-white p-4 rounded-2xl border-none flex flex-col items-center min-h-[226px]">
             <h3 class="font-bold self-start mb-4">Loan Progress</h3>
     
             <div class="w-full flex items-center justify-between gap-4">
@@ -215,9 +215,9 @@ const students = ref<Student[]>(studentData as Student[])
                     <p class="text-[10px] leading-tight text-gray-100">
                     You’ve repaid 70% of your current loan.
                     </p>
-                    <div class="mt-2">
+                    <div class="mt-1">
                     <p class="text-xs text-gray-500">Remaining Balance:</p>
-                    <p class="font-bold text-xl">{{ displayCurrency(Number(50000), 'NGN') }}</p>
+                    <p class="font-bold text-sm">{{ displayCurrency(Number(50000), 'NGN') }}</p>
                     </div>
                 </div>
 
