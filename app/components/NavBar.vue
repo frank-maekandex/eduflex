@@ -5,9 +5,9 @@
         <Logo color-class="text-primary" size-class="text-2xl" />
         <ul class="flex gap-6">
           <li><NuxtLink to="/" exact-active-class="text-primary font-semibold">Home</NuxtLink></li>
-          <li><NuxtLink to="/" exact-active-class="text-primary font-semibold">How It Works</NuxtLink></li>
-          <li><NuxtLink to="/" exact-active-class="text-primary font-semibold">Schools</NuxtLink></li>
-          <li><NuxtLink to="/" exact-active-class="text-primary font-semibold">Support</NuxtLink></li>
+          <li><NuxtLink to="/how-it-works" exact-active-class="text-primary font-semibold">How It Works</NuxtLink></li>
+          <li><NuxtLink to="/schools" exact-active-class="text-primary font-semibold">Schools</NuxtLink></li>
+          <li><NuxtLink to="/support" exact-active-class="text-primary font-semibold">Support</NuxtLink></li>
         </ul>
         <div class="flex gap-4">
           <NuxtLink to="/login">
