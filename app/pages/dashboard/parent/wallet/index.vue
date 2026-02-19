@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Card class="bg-primary text-white p-4 rounded-2xl border-none overflow-hidden flex flex-row items-center justify-between gap-4">
+    <Card class="bg-primary text-white p-4 rounded-2xl border-none overflow-hidden flex flex-col items-start md:flex-row md:items-center justify-between gap-4">
       <div class="flex flex-row items-center gap-4">
         <div class="size-16 bg-white rounded-xl flex items-center justify-center">
             <Icon name="solar:banknote-2-bold" class="text-primary size-7" />
@@ -13,16 +13,18 @@
           <p class="text-[10px] font-thin italic">Update 5mins ago</p>
         </div>
       </div>
-      <div class="flex flex-col items-end gap-2">
-        <div class="flex flex-row gap-1 items-center">
+      <div class="flex flex-col items-start md:items-end gap-2">
+        <div class="flex flex-col lg:flex-row gap-1 items-center">
           <p class="text-xs">Eduflex Account Number:</p>
           <div>
             <h1 class="flex items-center gap-1 text-xl">012345678900 <Icon name="solar:copy-outline" class="text-white" /></h1>
           </div>
         </div>
-        <Button variant="outline" class="w-full">
-          Pay Loan Now
-        </Button>
+        <NuxtLink to="/dashboard/parent/wallet/pay-loan">
+          <Button variant="outline" class="w-full">
+            Pay Loan Now
+          </Button>
+        </NuxtLink>
       </div>
     </Card>
   </div>

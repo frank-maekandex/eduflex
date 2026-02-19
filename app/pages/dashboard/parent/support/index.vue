@@ -10,16 +10,18 @@
           placeholder="Search help topics..."
         />
 
-        <div class="grid grid-cols-3 gap-3 max-w-[400px] mx-auto">
-          <div class="rounded-2xl border px-2 py-4 border-gray-border flex flex-col items-center justify-start">
-            <Icon name="circum:square-question" class="size-6 text-gray-100" />
-            <h3 class="font-semibold text-xs text-center">Frequently Asked Questions</h3>
-          </div>
-          <div class="rounded-2xl border px-2 py-4 border-gray-border flex flex-col items-center justify-start">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-[400px] mx-auto">
+          <NuxtLink to="/dashboard/parent/support/faqs">
+            <div class="rounded-lg border px-2 py-4 border-gray-border flex flex-col items-center justify-start">
+              <Icon name="circum:square-question" class="size-6 text-gray-100" />
+              <h3 class="font-semibold text-xs text-center">Frequently Asked Questions</h3>
+            </div>
+          </NuxtLink>
+          <div class="rounded-lg border px-2 py-4 border-gray-border flex flex-col items-center justify-start">
             <Icon name="circum:square-question" class="size-6 text-gray-100"/>
             <h3 class="font-semibold text-xs text-center">Integration Guides</h3>
           </div>
-          <div class="rounded-2xl border px-2 py-4 border-gray-border flex flex-col items-center justify-start">
+          <div class="rounded-lg border px-2 py-4 border-gray-border flex flex-col items-center justify-start">
             <Icon name="hugeicons:customer-support" class="size-6 text-gray-100"/>
             <h3 class="font-semibold text-xs text-center">Contact Support</h3>
           </div>

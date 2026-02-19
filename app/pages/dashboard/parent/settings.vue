@@ -25,7 +25,7 @@ const activeTab = ref('profile')
     <Tabs v-model="activeTab">
       <div class="grid grid-cols-12 items-start gap-6">
       
-        <div class="col-span-12 lg:col-span-3 space-y-6 bg-white rounded-lg pt-6 pb-20">
+        <div class="col-span-12 lg:col-span-3 space-y-6 bg-white rounded-lg pt-6 pb-6 lg:pb-20">
           <TabsList class="flex flex-col gap-4 p-0 shadow-none w-full bg-transparent">
     
             <TabsTrigger 

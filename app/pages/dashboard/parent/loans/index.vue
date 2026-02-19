@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
    
       <WalletCard 
           title="Active Loan Balance"
@@ -29,9 +29,11 @@
 
   <div className="w-full min-h-[60vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
     <ParentTitle title="Loans" desc="Manage your loan applications, repayment schedules, and disbursement history.">
-      <Button @click="applyLoan">
-        Apply for New Loan
-      </Button>
+      <NuxtLink to="/dashboard/parent/loans/apply-for-loan">
+        <Button @click="applyLoan">
+          Apply for New Loan
+        </Button>
+      </NuxtLink>
     </ParentTitle>
 
     <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">

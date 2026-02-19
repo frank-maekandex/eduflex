@@ -6,6 +6,16 @@ definePageMeta({
   title: 'Notifications'
 })
 
+const currentPage = ref(1)
+  const totalPages = ref(1000)
+
+  const handlePageChange = (newPage: number) => {
+    currentPage.value = newPage
+
+    console.log('Page changed to', newPage)
+    // Fetch new data here based on the page
+}
+
 const notifications = [
   {
     "id": "notif-001",
@@ -78,10 +88,10 @@ const groupedNotifications = computed(() => {
 </script>
 
 <template>
-  <div class="w-full space-y-8 bg-white p-6 rounded-2xl">
-    <div v-for="(items, dateLabel) in groupedNotifications" :key="dateLabel">
+  <div class="w-full space-y-8 flex-1 min-h-[82vh] flex flex-col bg-white p-6 rounded-2xl">
+    <div v-for="(items, dateLabel) in groupedNotifications" :key="dateLabel" class="flex-1">
       
-      <h3 class="text-sm font-bold text-gray-400 mb-1 px-1 uppercase tracking-tight">
+      <h3 class="text-sm font-bold text-gray-100 mb-1 px-1 uppercase tracking-tight">
         {{ dateLabel }}
       </h3>
 
@@ -89,13 +99,13 @@ const groupedNotifications = computed(() => {
         <div 
           v-for="note in items" 
           :key="note.id" 
-          class="group flex justify-between gap-6 items-start py-5 border-b border-gray-border transition-colors px-1"
+          class="group flex justify-between gap-6 items-start py-5 border-b border-gray-border last:border-0 transition-colors"
         >
           <div class="flex-1 pr-8">
             <h4 class="text-base font-bold mb-1 leading-snug">
               {{ note.title }}
             </h4>
-            <p class="text-[14px] text-gray-500 leading-normal max-w-2xl">
+            <p class="text-[14px] text-gray-100 leading-normal max-w-2xl">
               {{ note.description }}
             </p>
           </div>
@@ -107,12 +117,24 @@ const groupedNotifications = computed(() => {
                 note.status === 'unread' ? 'bg-primary' : 'bg-gray-100'
               ]"
             ></span>
-            <span class="text-[12px] font-medium text-gray-400 tabular-nums uppercase">
+            <span class="text-[12px] font-medium text-gray-100 tabular-nums uppercase">
               {{ note.time }}
             </span>
           </div>
         </div>
       </div>
+    </div>
+
+    <div className='flex gap-2 items-center justify-between w-full mt-10'>           
+        <div className='ml-auto'>
+            <AppPagination
+                :total="totalPages"
+                :items-per-page="10"
+                :default-page="currentPage"
+                :ellipsis-index="4"
+                @update:page="handlePageChange"
+            />
+        </div>
     </div>
   </div>
 </template>

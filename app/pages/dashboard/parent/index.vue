@@ -130,9 +130,9 @@ const students = ref<Student[]>(studentData as Student[])
   <div>
     <div class="grid grid-cols-12 gap-6">
       
-      <div class="col-span-12 lg:col-span-8 space-y-6">
+      <div class="col-span-12 xl:col-span-8 space-y-6">
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <Card class="bg-primary text-white p-4 rounded-2xl border-none overflow-hidden flex flex-row items-center gap-4 h-[105px]">
             <div class="size-14 bg-white rounded-xl flex items-center justify-center">
                <Icon name="solar:banknote-2-bold" class="text-primary size-7" />
@@ -172,16 +172,16 @@ const students = ref<Student[]>(studentData as Student[])
         </div>
 
         <Card class="bg-white rounded-2xl p-6 border-none">
-           <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="font-bold text-lg">Recent Transactions</h3>
-                    <p class="text-gray-100 text-sm">Here are your latest payment activities</p>
-                </div>
-                <NuxtLink to="/dashboard/parent/transactions">
-                  <Button variant="outline">
-                    View All Transactions
-                  </Button>
-                </NuxtLink>
+           <div class="flex justify-between gap-2 flex-col sm:flex-row items-start mb-6">
+              <div>
+                  <h3 class="font-bold text-lg">Recent Transactions</h3>
+                  <p class="text-gray-100 text-sm">Here are your latest payment activities</p>
+              </div>
+              <NuxtLink to="/dashboard/parent/transactions">
+                <Button variant="outline">
+                  View All Transactions
+                </Button>
+              </NuxtLink>
            </div>
            <div className="w-full min-h-[50vh] flex flex-col items-center justify-between overflow-x-auto">
                 <Table>
@@ -206,20 +206,20 @@ const students = ref<Student[]>(studentData as Student[])
         </Card>
       </div>
 
-      <div class="col-span-12 lg:col-span-4 space-y-6">
+      <div class="col-span-12 xl:col-span-4 space-y-6">
         
         <Card class="bg-white p-4 rounded-2xl border-none flex flex-col items-center min-h-[226px]">
             <h3 class="font-bold self-start mb-4">Loan Progress</h3>
     
-            <div class="w-full flex items-center justify-between gap-4">
+            <div class="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             
-                <div class="flex flex-col gap-2 items-start max-w-[150px]">
+                <div class="flex flex-col gap-2 items-start w-full md:max-w-[150px]">
                     <p class="text-[10px] leading-tight text-gray-100">
-                    You’ve repaid 70% of your current loan.
+                      You’ve repaid 70% of your current loan.
                     </p>
                     <div class="mt-1">
-                    <p class="text-xs text-gray-500">Remaining Balance:</p>
-                    <p class="font-bold text-sm">{{ displayCurrency(Number(50000), 'NGN') }}</p>
+                      <p class="text-xs text-gray-500">Remaining Balance:</p>
+                      <p class="font-bold text-sm">{{ displayCurrency(Number(500000000), 'NGN') }}</p>
                     </div>
                 </div>
 
@@ -243,8 +243,10 @@ const students = ref<Student[]>(studentData as Student[])
 
         <Card class="bg-white rounded-2xl border-none p-4">
           <div class="flex justify-between items-center mb-4">
-             <h3 class="font-semibold text-sm">Students Summary</h3>
-             <Button size="sm">Add Students</Button>
+             <h3 class="font-semibold text-sm">Children Summary</h3>
+             <NuxtLink to="/dashboard/parent/children/add-child">
+               <Button size="sm">Add Child</Button>
+             </NuxtLink>
           </div>
           <div class="flex flex-col">
                 <ParentStudentSummaryCard
@@ -257,7 +259,9 @@ const students = ref<Student[]>(studentData as Student[])
                     :loan-status="student.loanStatus"
                 />
             </div>
-            <Button class="w-full mt-4">Apply For Loan Now</Button>
+            <NuxtLink to="/dashboard/parent/loans/apply-for-loan">
+              <Button class="w-full mt-4">Apply For Loan Now</Button>
+            </NuxtLink>
         </Card>
 
         <div class="w-full h-42 rounded-3xl border border-gray-border overflow-hidden">

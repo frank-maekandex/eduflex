@@ -33,7 +33,7 @@ defineProps<Props>()
     </div>
 
     <div class="flex flex-col items-end gap-1">
-      <span class="text-[8px] font-semibold uppercase tracking-wider">Loan Status</span>
+      <span class="text-[8px] font-semibold uppercase text-right tracking-wider">Loan Status</span>
       <StudentStatus :status="loanStatus" />
     </div>
   </div>

@@ -1,9 +1,12 @@
 <template>
   <div className="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
     <ParentTitle title="Children List" desc="Here is the details of your children and their financial progress">
-      <Button @click="add">
-        Add Student
-      </Button>
+      
+      <NuxtLink to="/dashboard/parent/children/add-child">
+        <Button @click="add">
+          Add Child
+        </Button>
+      </NuxtLink>
     </ParentTitle>
 
     <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
