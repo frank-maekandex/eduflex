@@ -177,18 +177,20 @@ const students = ref<Student[]>(studentData as Student[])
                     <h3 class="font-bold text-lg">Recent Transactions</h3>
                     <p class="text-gray-100 text-sm">Here are your latest payment activities</p>
                 </div>
-                <Button variant="outline">
+                <NuxtLink to="/dashboard/parent/transactions">
+                  <Button variant="outline">
                     View All Transactions
-                </Button>
+                  </Button>
+                </NuxtLink>
            </div>
            <div className="w-full min-h-[50vh] flex flex-col items-center justify-between overflow-x-auto">
                 <Table>
                     <TableHeader>
                         <TableRow className="bg-background text-left">
-                            <TableHead className="capitalize p-3 text-gray-100">Description</TableHead>
-                            <TableHead className='capitalize p-3 text-gray-100'>Date</TableHead>
-                            <TableHead className='capitalize p-3 text-gray-100'>Amount</TableHead>
-                            <TableHead className="capitalize p-3 text-gray-100">Status</TableHead>
+                            <TableHead className="capitalize p-3 text-gray-100 font-semibold">Description</TableHead>
+                            <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Date</TableHead>
+                            <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
+                            <TableHead className="capitalize p-3 text-gray-100 font-semibold">Status</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -200,7 +202,7 @@ const students = ref<Student[]>(studentData as Student[])
                         </TableRow>
                     </TableBody>
                 </Table>
-                </div> 
+            </div> 
         </Card>
       </div>
 
@@ -229,7 +231,7 @@ const students = ref<Student[]>(studentData as Student[])
                         empty-color="#f1f5f9"
                         :thickness="12"
                         empty-thickness="12"
-                        animation="rs 1000 500"
+                        :line="'butt'"
                     >
                         <span class="text-xl font-bold text-[#1C274D]">
                             70%

@@ -30,12 +30,14 @@ import {
           </h2>
         </div>
         <div class="h-full ml-auto flex items-center gap-4">
-          <span class="flex size-10 items-center justify-center rounded-full bg-background">
-            <Icon name="ph:bell-light" class="text-gray-100 size-6" />
-          </span>
+          <NuxtLink to="/dashboard/parent/notifications" class="relative">
+            <span class="flex size-10 items-center justify-center rounded-full bg-background">
+              <Icon name="ph:bell-light" class="text-gray-100 size-6" />
+            </span>
+          </NuxtLink>
           <Avatar class="bg-background">
             <AvatarImage src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="P" />
-            <AvatarFallback class="text-primary font-bold text-base">FO</AvatarFallback>
+            <AvatarFallback class="text-primary font-bold text-base">P</AvatarFallback>
           </Avatar>
         </div>
       </header>

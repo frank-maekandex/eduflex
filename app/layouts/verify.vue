@@ -6,22 +6,13 @@
             <p class="text-gray-100">Verify identity to continue</p>
         </div>
         <div>
-            <!-- <ve-progress :progress="50" color="#1e3a8a" /> -->
-            <!-- <ve-progress 
-                :progress="40" 
-                :size="80" 
-                color="#1e3a8a" 
-                empty-color="#f1f5f9"
-                :thickness="6"
-                empty-thickness="6"
-            /> -->
             <ve-progress 
                 :progress="progressValue" 
                 :size="80" 
                 color="#1e3a8a"
                 empty-color="#f1f5f9"
                 :thickness="6"
-                empty-thickness="6"
+                :line="'butt'"
             >
                 <span class="text-xl font-bold text-slate-900">
                 {{ currentStep }}/{{ totalSteps }}
