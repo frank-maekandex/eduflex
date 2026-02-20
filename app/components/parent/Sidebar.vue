@@ -6,7 +6,7 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarMenuItem
 } from "@/components/ui/sidebar"
 import { useRoute } from 'vue-router'
 
@@ -68,41 +68,43 @@ const isPageActive = (itemUrl: string) => {
 </script>
 
 <template>
-  <Sidebar v-bind="props" class="bg-white border-none">
-    <SidebarHeader class="h-28 flex flex-col justify-center px-8">
-      <Logo />
-    </SidebarHeader>
+  <Sidebar v-bind="props" class="!bg-white border-none">
+    <div class="bg-white h-full flex flex-col">
+      <SidebarHeader class="h-28 flex flex-col justify-center px-8">
+        <Logo />
+      </SidebarHeader>
 
-    <SidebarContent class="py-4"> 
-      <SidebarMenu class="gap-4"> 
-        <SidebarMenuItem v-for="item in navBar" :key="item.title">
-          <SidebarMenuButton
-            as-child
-            :is-active="isPageActive(item.url)"
-            class="h-12 px-7 transition-all duration-200 group rounded-none"
-            :class="[
-              isPageActive(item.url) 
-                ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-l-4 border-primary' 
-                : 'text-gray-100 hover:bg-background'
-            ]"
-          >
-            <NuxtLink :to="item.url" class="flex items-center gap-4 w-full">
-              <Icon 
-                :name="isPageActive(item.url) ? item.activeIcon : item.icon" 
-                class="size-6 transition-colors"
-                :class="isPageActive(item.url) ? 'hover:text-white' : 'text-gray-100'" 
-              />
-              <span class="font-semibold text-base tracking-tight">
-                {{ item.title }}
-              </span>
-            </NuxtLink>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      </SidebarMenu>
-    </SidebarContent>
+      <SidebarContent class="py-4"> 
+        <SidebarMenu class="gap-4"> 
+          <SidebarMenuItem v-for="item in navBar" :key="item.title">
+            <SidebarMenuButton
+              as-child
+              :is-active="isPageActive(item.url)"
+              class="h-12 px-7 transition-all duration-200 group rounded-none"
+              :class="[
+                isPageActive(item.url) 
+                  ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-l-4 border-primary' 
+                  : 'text-gray-100 hover:bg-background'
+              ]"
+            >
+              <NuxtLink :to="item.url" class="flex items-center gap-4 w-full">
+                <Icon 
+                  :name="isPageActive(item.url) ? item.activeIcon : item.icon" 
+                  class="size-6 transition-colors"
+                  :class="isPageActive(item.url) ? 'hover:text-white' : 'text-gray-100'" 
+                />
+                <span class="font-semibold text-base tracking-tight">
+                  {{ item.title }}
+                </span>
+              </NuxtLink>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarContent>
 
-    <div class="px-8 py-8">
-      <Button variant="outline" class="w-full">Log Out</Button>
+      <div class="px-8 py-8">
+        <Button variant="outline" class="w-full">Log Out</Button>
+      </div>
     </div>
   </Sidebar>
 </template>
