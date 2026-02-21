@@ -10,7 +10,6 @@ import {
   FieldGroup,
   FieldLabel
 } from "@/components/ui/field"
-import { B } from 'vue-router/dist/router-CWoNjPRp.mjs'
 
 definePageMeta({
   layout: "school-dashboard",
