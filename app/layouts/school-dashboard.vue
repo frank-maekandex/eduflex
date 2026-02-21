@@ -14,7 +14,7 @@ import {
 
 <template>
   <SidebarProvider>
-    <ParentSidebar />
+    <SchoolSidebar />
     <SidebarInset class="bg-background mx-2 lg:mx-6">
       <header class="bg-white sticky top-0 flex h-20 shrink-0 items-center gap-2 z-50 px-4 rounded-b-xl">
         <SidebarTrigger class="-ml-1 text-black" />
@@ -30,12 +30,12 @@ import {
           </h2>
         </div>
         <div class="h-full ml-auto flex items-center gap-4">
-          <NuxtLink to="/dashboard/parent/notifications" class="relative">
+          <NuxtLink to="/dashboard/school/notifications" class="relative">
             <span class="flex size-10 items-center justify-center rounded-full bg-background">
               <Icon name="ph:bell-light" class="text-gray-100 size-6" />
             </span>
           </NuxtLink>
-          <NuxtLink to="/dashboard/parent/settings">
+          <NuxtLink to="/dashboard/school/settings">
             <Avatar class="bg-background">
               <AvatarImage src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg" alt="P" />
               <AvatarFallback class="text-primary font-bold text-base">P</AvatarFallback>

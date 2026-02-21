@@ -8,6 +8,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+
+const selectedFile = ref(null)
+
+const handleFile = (event: any) => {
+  const file = event.target.files[0]
+  if (!file) return
+
+  // PAGE SPECIFIC LOGIC: 1MB limit here
+  if (file.size > 1 * 1024 * 1024) {
+    return alert("Too big for Page A!")
+  }
+
+  selectedFile.value = file
+  // Start upload...
+}
+
 </script>
 
 <template>
@@ -39,7 +55,11 @@ import {
             </Select>
         </Field>
         <FileUpload 
-            label="Proof of Address (Light or Sewage)" 
+            label="Proof of Address (Light or Sewage)"
+            :fileName="selectedFile?.name"
+            @select="handleFile" 
+            accept=".pdf,.jpeg,.jpg,.png"
+            desc="PDF, JPEG, PNG ≤ 2MB"
         />
         <Field class="max-w-72 mx-auto">
             <Button type="submit">

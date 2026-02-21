@@ -20,7 +20,7 @@ const { toggleSidebar } = useSidebar()
     :class="cn('h-7 w-7', props.class)"
     @click="toggleSidebar"
   >
-    <PanelLeft />
+    <Icon name="akar-icons:panel-left" class="size-6"/>
     <span class="sr-only">Toggle Sidebar</span>
   </Button>
 </template>

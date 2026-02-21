@@ -5,14 +5,14 @@
         </FieldLabel>
         <div
         class="border border-dashed border-gray-border rounded-lg p-6 flex flex-col items-center justify-center transition-all hover:border-primary/80"
-            @click="triggerFileInput"
+            @click="fileInput?.click()"
         >
         <div class="text-center space-y-1">
             <h3 class="font-semibold text-black">
-                Click to upload file
+                {{ fileName || 'Click to upload file' }}
             </h3>
-            <p class="text-xs text-slate-400 font-medium">
-            PDF/JPEG ≤ 2MB
+            <p class="text-sm text-gray-100">
+                {{ desc  || 'PDF/JPEG ≤ 2MB' }}
             </p>
         </div>
 
@@ -27,8 +27,8 @@
             type="file"
             ref="fileInput"
             class="hidden"
-            accept=".pdf,.jpeg,.jpg"
-            @change="handleFileSelect"
+            :accept="accept"
+            @change="$emit('select', $event)"
         />
         </div>
     </Field>
@@ -37,21 +37,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-defineProps<{ label: string }>()
+defineProps<{
+  label?: string
+  accept?: string
+  fileName?: string | null 
+  desc?: string
+}>()
 
-// Define the ref with the correct HTML type
+defineEmits(['select'])
+
 const fileInput = ref<HTMLInputElement | null>(null)
 
-// Create a function to trigger the click
-const triggerFileInput = () => {
-  // TypeScript now knows fileInput is an HTMLInputElement
-  fileInput.value?.click()
-}
-
-const handleFileSelect = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  if (target.files?.length) {
-    console.log('Selected:', target.files[0])
-  }
-}
 </script>
