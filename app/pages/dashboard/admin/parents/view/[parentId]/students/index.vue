@@ -51,7 +51,7 @@
 
   definePageMeta({
     layout: "admin-dashboard",
-    title: 'Student List'
+    title: 'Linked Students'
   })
 
   const add = () => {

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 
 definePageMeta({
   layout: "admin-dashboard",
-  title: 'School Details'
+  title: 'Disbursements'
 })
 
 const showSuccess = ref(false)
@@ -20,24 +20,24 @@ const handleSuccess = () => {
 
 const route = useRoute();
 
-const parentId = route.params.schoolId
+const parentId = route.params.parentId
 
-const confirmVerify = ref(false)
-const showVerifySuccess = ref(false)
+const confirmApprove = ref(false)
+const showApproveSuccess = ref(false)
 const confirmReject = ref(false)
 const showRejectSuccess = ref(false)
 
-const openConfirmVerify = () => {
-  confirmVerify.value = true
+const openConfirmApprove = () => {
+  confirmApprove.value = true
 }
 
-const closeconfirmVerify = () => {
-  showVerifySuccess.value = false
+const closeconfirmApprove = () => {
+  showApproveSuccess.value = false
 }
 
-const handleVerify = () => {
-  confirmVerify.value = false  
-  showVerifySuccess.value = true
+const handleApprove = () => {
+  confirmApprove.value = false  
+  showApproveSuccess.value = true
 }
 
 const handleReject = () => {
@@ -67,15 +67,15 @@ const closeconfirmReject = () => {
                 <FieldGroup>
                 <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                     <div>
-                        <Label class="text-gray-100 font-normal">School Name</Label>
+                        <Label class="text-gray-100 font-normal">Loan ID</Label>
                         <h2 class="font-semibold">Michael Owodunmi</h2>
                     </div>
                     <div>
-                        <Label class="text-gray-100 font-normal">School ID</Label>
+                        <Label class="text-gray-100 font-normal">Parent Name</Label>
                         <h2 class="font-semibold">123456</h2>
                     </div>
                     <div>
-                        <Label class="text-gray-100 font-normal">Email</Label>
+                        <Label class="text-gray-100 font-normal">Student Name</Label>
                         <h2 class="font-semibold">owodunmi1991@gmail.com</h2>
                     </div>
                     <div>
@@ -83,51 +83,39 @@ const closeconfirmReject = () => {
                         <h2 class="font-semibold">4</h2>
                     </div>
                     <div>
-                        <Label class="text-gray-100 font-normal">School Type</Label>
+                        <Label class="text-gray-100 font-normal">School Name</Label>
                         <h2 class="font-semibold">13 Nov, 2025</h2>
                     </div>
                     <div>
-                        <Label class="text-gray-100 font-normal">School Category</Label>
+                        <Label class="text-gray-100 font-normal">Loan Amount</Label>
                         <h2 class="font-semibold">Verified</h2>
                     </div>
                     <div>
-                        <Label class="text-gray-100 font-normal">CAC Registration Number</Label>
+                        <Label class="text-gray-100 font-normal">Interest Rate</Label>
                         <h2 class="font-semibold">Avtive</h2>
                     </div>
                     <div>
-                        <Label class="text-gray-100 font-normal">License/Approval Number</Label>
+                        <Label class="text-gray-100 font-normal">Tenure</Label>
                         <h2 class="font-semibold">₦2,760,000</h2>
                     </div>
                     <div>
-                        <Label class="text-gray-100 font-normal">Accreditation Document</Label>
+                        <Label class="text-gray-100 font-normal">Status</Label>
                         <h2 class="font-semibold">********112345</h2>
                     </div>
                     <div>
-                        <Label class="text-gray-100 font-normal">Bank Account Number</Label>
-                        <h2 class="font-semibold">incomeproof.jpeg   View</h2>
-                    </div>
-                    <div>
-                        <Label class="text-gray-100 font-normal">Bank Account Name</Label>
-                        <h2 class="font-semibold">Samson Owodunmi</h2>
-                    </div>
-                    <div>
-                        <Label class="text-gray-100 font-normal">Bank Name</Label>
-                        <h2 class="font-semibold">080234567890</h2>
-                    </div>
-                    <div>
-                        <Label class="text-gray-100 font-normal">Address</Label>
-                        <h2 class="font-semibold">No. 5 Off Alkali Road, By PHCN Office, Ikorodu, Lagos</h2>
+                        <Label class="text-gray-100 font-normal">Date Applied</Label>
+                        <h2 class="font-semibold">3 Month</h2>
                     </div>
                 </div>
 
                 
 
                 <Field class="mt-10 max-w-[500px] mx-auto grid grid-cols-1 md:grid-cols-2">
-                    <Button type="submit" @click.prevent="openConfirmVerify">
-                        Verify Now
+                    <Button type="submit" @click.prevent="openConfirmApprove">
+                        Disburse Loan
                     </Button>
                     <Button type="submit" variant="ghost" @click.prevent="openConfirmReject">
-                        Reject
+                        Reject Loan
                     </Button>
                 </Field>
                 </FieldGroup>
@@ -136,8 +124,8 @@ const closeconfirmReject = () => {
     </div>
 
     <AlertModal
-        v-model="confirmVerify"
-        title="Are you sure you want to verify this school?"
+        v-model="confirmApprove"
+        title="Are you sure you want to approve this disbursement?"
         icon="mingcute:question-fill" 
         iconColor="text-primary"
     >
@@ -149,8 +137,8 @@ const closeconfirmReject = () => {
                 </Field>
 
                 <Field>
-                <Button variant="outline" class="w-full rounded-full" @click.prevent="handleVerify">
-                    Verify
+                <Button variant="outline" class="w-full rounded-full" @click.prevent="handleApprove">
+                    Approve
                 </Button>
                 </Field>
             </FieldGroup>
@@ -158,19 +146,20 @@ const closeconfirmReject = () => {
     </AlertModal>
 
     <AlertModal
-        v-model="showVerifySuccess"
-        title="School Verified!"
+        v-model="showApproveSuccess"
+        title="Disbursement Approved!"
+        description="Funds has been sent to the school account"
         icon="ph:seal-check-fill"
         iconColor="text-primary"
     >
-        <Button class="w-full" @click="closeconfirmVerify">
-        Close
+        <Button class="w-full" @click="closeconfirmApprove">
+            Close
         </Button>
     </AlertModal>
 
     <AlertModal
         v-model="confirmReject"
-        title="You are about to reject this school"
+        title="Are you sure you want to reject this loan application?"
         icon="mingcute:question-fill" 
         iconColor="text-red-600"
     >
@@ -178,13 +167,13 @@ const closeconfirmReject = () => {
         <FieldGroup>
 
             <Field class="grid gap-1 w-full">
-            <Input type="text" placeholder="Reason" />
+                <Input type="text" placeholder="Reason" />
             </Field>
 
             <Field>
-            <Button variant="ghost" class="w-full rounded-full" @click.prevent="handleReject">
-                Reject
-            </Button>
+                <Button variant="ghost" class="w-full rounded-full" @click.prevent="handleReject">
+                    Reject Loan
+                </Button>
             </Field>
         </FieldGroup>
         </form>
@@ -192,13 +181,13 @@ const closeconfirmReject = () => {
 
     <AlertModal
         v-model="showRejectSuccess"
-        title="School Rejected!"
-        description="A feedback has been sent to the parent"
+        title="Loan Rejected!"
+        description="You have rejected this loan application and a feedback has been sent to the parent."
         icon="ph:seal-check-fill"
         iconColor="text-primary"
     >
         <Button class="w-full" @click="closeconfirmReject">
-        Close
+            Close
         </Button>
     </AlertModal>
 </template>

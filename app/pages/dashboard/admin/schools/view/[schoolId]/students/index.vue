@@ -24,7 +24,7 @@
                     <TableCell class="capitalize"><LoanStatus :status="children?.loanStatus" /></TableCell>
                     <TableCell class="capitalize">{{ displayCurrency(Number(children?.loanAmount), 'NGN') }}</TableCell>
                     <TableCell class="capitalize">
-                      <AdminModalViewStudent :children="children" />
+                      <AdminModalViewSchoolStudent :children="children" />
                     </TableCell>
                 </TableRow>
             </TableBody>
@@ -51,7 +51,7 @@
 
   definePageMeta({
     layout: "admin-dashboard",
-    title: 'Student List'
+    title: 'Linked Students'
   })
 
   const add = () => {

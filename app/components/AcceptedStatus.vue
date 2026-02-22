@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  status: 'Accepted' | 'Rejected' | string
+  status: 'Accepted' | 'Approved' | 'Rejected' | string
 }
 
 const props = defineProps<Props>()
@@ -8,6 +8,7 @@ const props = defineProps<Props>()
 // Mapping status to colors
 const statusMap: Record<string, { dot: string; text: string }> = {
   Accepted: { dot: 'bg-emerald-500', text: 'text-emerald-500' },
+  Approved: { dot: 'bg-emerald-500', text: 'text-emerald-500' },
   Rejected:     { dot: 'bg-red-500',     text: 'text-red-500' },
 }
 

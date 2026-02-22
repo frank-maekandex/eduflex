@@ -24,7 +24,7 @@ const searchTerm = ref('')
 
 definePageMeta({
     layout: "admin-dashboard",
-    title: "Manage Schools",
+    title: "Loans",
 })
 
 
@@ -131,7 +131,7 @@ const parents = [
   <div class="flex flex-col gap-4">
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
        <SmallWalletCard 
-          title="Total Schools"
+          title="Total Loan Applications"
           :amount="348"
           icon-name="mdi:user"
           icon-color-class="text-slate-800"
@@ -139,7 +139,7 @@ const parents = [
         />
 
         <SmallWalletCard 
-          title="Verified Schools"
+          title="Active Loans"
           :amount="234"
           icon-name="mdi:user"
           icon-color-class="text-red-500"
@@ -147,7 +147,7 @@ const parents = [
         />
 
         <SmallWalletCard 
-          title="Pending Schools"
+          title="Pending Admin Review"
           amount="23"
           icon-name="mdi:user" 
           icon-color-class="text-orange-500"
@@ -155,7 +155,7 @@ const parents = [
         />
 
         <SmallWalletCard 
-          title="Flagged Schools"
+          title="Defaulted Loans"
           amount="4"
           icon-name="mdi:user"
           icon-color-class="text-slate-800"
@@ -167,7 +167,7 @@ const parents = [
 
       <Card class="bg-white rounded-2xl p-6 border-none">
          
-          <ParentTitle title="EduFlex Schools" desc="Here are your all schools registered on EduFlex">
+          <ParentTitle title="Manage Loan Applications" desc="Review, approve, or monitor loan requests from verified parents">
             <Search 
               v-model="searchTerm" 
               placeholder="Search Name or ID"
@@ -179,11 +179,11 @@ const parents = [
               <Table>
                   <TableHeader>
                       <TableRow className="bg-background text-left">
-                          <TableHead className="capitalize p-3 text-gray-100 font-semibold">School ID</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>School Name</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Date Joined</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Students</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Administrator</TableHead>
+                          <TableHead className="capitalize p-3 text-gray-100 font-semibold">Loan ID</TableHead>
+                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Parent</TableHead>
+                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Student</TableHead>
+                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>School</TableHead>
+                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
                           <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
                           <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
                       </TableRow>
@@ -199,17 +199,9 @@ const parents = [
                           <TableCell class="capitalize">{{ parent?.fullName }}</TableCell>
                           <TableCell class="capitalize"><VerificationStatus :status="parent?.status"/></TableCell>
                           <TableCell class="capitalize flex flex-row  items-center gap-4">
-                            <NuxtLink v-if="parent?.status === 'Pending'" :to="`/dashboard/admin/schools/verify/${parent?.parentId}`">
-                              <Button size="sm">Verify</Button>
-                            </NuxtLink>
-                            <NuxtLink v-else :to="`/dashboard/admin/schools/view/${parent?.parentId}`">
+                            <NuxtLink :to="`/dashboard/admin/loans/view/${parent?.parentId}`">
                               <Button size="sm" variant="outline">View</Button>
                             </NuxtLink>
-
-                            <Button size="sm" variant="ghost" v-if="parent?.status === 'Pending'" class="min-w-24" @click.prevent="openConfirmReject">Reject</Button>
-                            <Button size="sm" variant="ghost" v-else-if="parent?.status === 'Verified'" class="min-w-24" @click.prevent="openConfirmSuspend">Suspend</Button>
-                            <Button size="sm" variant="outline" v-else-if="parent?.status === 'Suspended'" class="min-w-24" @click.prevent="openConfirmReactivate">Reactivate</Button>
-                            
                           </TableCell>
                       </TableRow>
                   </TableBody>

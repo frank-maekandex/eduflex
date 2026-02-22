@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 
 definePageMeta({
   layout: "admin-dashboard",
-  title: 'Parent Details'
+  title: 'School Details'
 })
 
 const confirmSuspend = ref(false)
@@ -44,7 +44,7 @@ const closeConfirmDelete = () => {
 
 const route = useRoute();
 
-const parentId = route.params.parentId
+const schoolId = route.params.schoolId
 
 
 // const { data, pending } = await useFetch(`/api/parents/${parentId}`, {
@@ -61,11 +61,11 @@ const parentId = route.params.parentId
         <FieldGroup>
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             <div>
-                <Label class="text-gray-100 font-normal">Full Name</Label>
+                <Label class="text-gray-100 font-normal">School Name</Label>
                 <h2 class="font-semibold">Michael Owodunmi</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Parent ID</Label>
+                <Label class="text-gray-100 font-normal">School ID</Label>
                 <h2 class="font-semibold">123456</h2>
             </div>
             <div>
@@ -73,77 +73,60 @@ const parentId = route.params.parentId
                 <h2 class="font-semibold">owodunmi1991@gmail.com</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Linked Students</Label>
+                <Label class="text-gray-100 font-normal">Phone Number</Label>
                 <h2 class="font-semibold">4</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Date Joined</Label>
+                <Label class="text-gray-100 font-normal">School Type</Label>
                 <h2 class="font-semibold">13 Nov, 2025</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Status</Label>
+                <Label class="text-gray-100 font-normal">School Category</Label>
                 <h2 class="font-semibold">Verified</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Loan Status</Label>
+                <Label class="text-gray-100 font-normal">CAC Registration Number</Label>
                 <h2 class="font-semibold">Avtive</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Loan Amount</Label>
+                <Label class="text-gray-100 font-normal">License/Approval Number</Label>
                 <h2 class="font-semibold">₦2,760,000</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">NIN</Label>
+                <Label class="text-gray-100 font-normal">Representative Name</Label>
                 <h2 class="font-semibold">********112345</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Proof of Income</Label>
+                <Label class="text-gray-100 font-normal">Accreditation Document</Label>
                 <h2 class="font-semibold">incomeproof.jpeg   View</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Name of Guarantor</Label>
+                <Label class="text-gray-100 font-normal">Representative Role</Label>
                 <h2 class="font-semibold">Samson Owodunmi</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Guarantor Contact</Label>
+                <Label class="text-gray-100 font-normal">Representative Contact</Label>
                 <h2 class="font-semibold">080234567890</h2>
             </div>
             <div>
-                <Label class="text-gray-100 font-normal">Amount Repaid</Label>
+                <Label class="text-gray-100 font-normal">Representative Contact</Label>
                 <h2 class="font-semibold">₦1,760,000</h2>
-            </div>
-            <div>
-                <Label class="text-gray-100 font-normal">Amount Remaining</Label>
-                <h2 class="font-semibold">₦1,000,000</h2>
-            </div>
-            <div>
-                <Label class="text-gray-100 font-normal">Loan Amount</Label>
-                <h2 class="font-semibold">₦2,760,000</h2>
-            </div>
-            <div>
-                <Label class="text-gray-100 font-normal">Next Repayment</Label>
-                <h2 class="font-semibold">5 Dec, 2025</h2>
             </div>
         </div>
 
         
 
         <Field class="mt-10 max-w-[500px] mx-auto grid grid-cols-1 md:grid-cols-2">
-            <NuxtLink :to="`/dashboard/admin/parents/view/${parentId}/students`">
+            <NuxtLink :to="`/dashboard/admin/schools/view/${schoolId}/students`">
                 <Button type="submit" variant="outline" class="w-full">
                     View Linked Students
                 </Button>
             </NuxtLink>
-            <NuxtLink :to="`/dashboard/admin/parents/view/${parentId}/guarantors`">
-                <Button type="submit" variant="outline" class="w-full">
-                    View Guarantors Info
-                </Button>
-            </NuxtLink>
             <Button type="submit" variant="ghost" @click.prevent="openConfirmSuspend">
-                Suspend Parent
+                Suspend School
             </Button>
             <Button type="submit" variant="ghost" @click.prevent="openConfirmDelete">
-                Delete Parent Account
+                Delete School Account
             </Button>
         </Field>
         </FieldGroup>
@@ -153,7 +136,7 @@ const parentId = route.params.parentId
 
     <AlertModal
         v-model="confirmSuspend"
-        title="You are about to suspend this parent"
+        title="You are about to suspend this school"
         icon="mingcute:question-fill" 
         iconColor="text-red-600"
     >
@@ -175,8 +158,8 @@ const parentId = route.params.parentId
 
     <AlertModal
         v-model="showSuspendSuccess"
-        title="Parent Suspended!"
-        description="You have suspended this parent and parent can longer make use of this platform."
+        title="School Suspended!"
+        description="You have suspended this school and school can longer make use of this platform."
         icon="ph:seal-check-fill"
         iconColor="text-primary"
     >
@@ -187,7 +170,7 @@ const parentId = route.params.parentId
 
     <AlertModal
         v-model="confirmDelete"
-        title="You are about to delete this parent"
+        title="You are about to delete this school"
         icon="mingcute:question-fill" 
         iconColor="text-red-600"
     >
@@ -209,8 +192,8 @@ const parentId = route.params.parentId
 
     <AlertModal
         v-model="showDeleteSuccess"
-        title="Parent Deleted!"
-        description="A feedback has been sent to the parent."
+        title="School Deleted!"
+        description="A feedback has been sent to the school."
         icon="ph:seal-check-fill"
         iconColor="text-primary"
     >

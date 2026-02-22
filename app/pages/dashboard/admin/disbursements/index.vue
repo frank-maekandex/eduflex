@@ -24,7 +24,7 @@ const searchTerm = ref('')
 
 definePageMeta({
     layout: "admin-dashboard",
-    title: "Manage Schools",
+    title: "Disbursements",
 })
 
 
@@ -81,7 +81,7 @@ const parents = [
       "dateJoined": "2025-11-13",
       "students": null,
       "loanStatus": null,
-      "status": "Pending"
+      "status": "Approved"
     },
     {
       "parentId": "2",
@@ -89,7 +89,7 @@ const parents = [
       "dateJoined": "2025-11-13",
       "students": null,
       "loanStatus": null,
-      "status": "Pending"
+      "status": "Rejected"
     },
     {
       "parentId": "3",
@@ -97,7 +97,7 @@ const parents = [
       "dateJoined": "2025-11-13",
       "students": 4,
       "loanStatus": "Active",
-      "status": "Verified"
+      "status": "Approved"
     },
     {
       "parentId": "4",
@@ -105,7 +105,7 @@ const parents = [
       "dateJoined": "2025-11-13",
       "students": 4,
       "loanStatus": "Active",
-      "status": "Suspended"
+      "status": "Rejected"
     },
     {
       "parentId": "5",
@@ -113,7 +113,7 @@ const parents = [
       "dateJoined": "2025-11-13",
       "students": 4,
       "loanStatus": "Active",
-      "status": "Pending"
+      "status": "Approved"
     },
     {
       "parentId": "6",
@@ -121,7 +121,7 @@ const parents = [
       "dateJoined": "2025-11-13",
       "students": 4,
       "loanStatus": "Active",
-      "status": "Verified"
+      "status": "Rejected"
     }
   ]
 
@@ -131,33 +131,33 @@ const parents = [
   <div class="flex flex-col gap-4">
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
        <SmallWalletCard 
-          title="Total Schools"
-          :amount="348"
-          icon-name="mdi:user"
+          title="Total Disbursements"
+          :amount="displayCurrency(Number(500000), 'NGN')"
+          icon-name="solar:cash-out-bold"
           icon-color-class="text-slate-800"
           icon-bg-class="bg-primary/10"
         />
 
         <SmallWalletCard 
-          title="Verified Schools"
+          title="Successful Disbursements"
           :amount="234"
-          icon-name="mdi:user"
+          icon-name="solar:cash-out-bold"
           icon-color-class="text-red-500"
           icon-bg-class="bg-red-100/80"
         />
 
         <SmallWalletCard 
-          title="Pending Schools"
+          title="Pending Disbursements"
           amount="23"
-          icon-name="mdi:user" 
+          icon-name="solar:cash-out-bold" 
           icon-color-class="text-orange-500"
           icon-bg-class="bg-orange-100/80"
         />
 
         <SmallWalletCard 
-          title="Flagged Schools"
+          title="Failed Disbursements"
           amount="4"
-          icon-name="mdi:user"
+          icon-name="solar:cash-out-bold"
           icon-color-class="text-slate-800"
           icon-bg-class="bg-primary/10"
         />
@@ -167,7 +167,7 @@ const parents = [
 
       <Card class="bg-white rounded-2xl p-6 border-none">
          
-          <ParentTitle title="EduFlex Schools" desc="Here are your all schools registered on EduFlex">
+          <ParentTitle title="Loan Disbursements Overview" desc="Review, approve, or monitor loan requests from verified parents">
             <Search 
               v-model="searchTerm" 
               placeholder="Search Name or ID"
@@ -179,11 +179,11 @@ const parents = [
               <Table>
                   <TableHeader>
                       <TableRow className="bg-background text-left">
-                          <TableHead className="capitalize p-3 text-gray-100 font-semibold">School ID</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>School Name</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Date Joined</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Students</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Administrator</TableHead>
+                          <TableHead className="capitalize p-3 text-gray-100 font-semibold">Loan ID</TableHead>
+                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Parent</TableHead>
+                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Student</TableHead>
+                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>School</TableHead>
+                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
                           <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
                           <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
                       </TableRow>
@@ -197,19 +197,11 @@ const parents = [
                             {{ parent?.students || "-"}}
                           </TableCell>
                           <TableCell class="capitalize">{{ parent?.fullName }}</TableCell>
-                          <TableCell class="capitalize"><VerificationStatus :status="parent?.status"/></TableCell>
+                          <TableCell class="capitalize"><AcceptedStatus :status="parent?.status"/></TableCell>
                           <TableCell class="capitalize flex flex-row  items-center gap-4">
-                            <NuxtLink v-if="parent?.status === 'Pending'" :to="`/dashboard/admin/schools/verify/${parent?.parentId}`">
-                              <Button size="sm">Verify</Button>
-                            </NuxtLink>
-                            <NuxtLink v-else :to="`/dashboard/admin/schools/view/${parent?.parentId}`">
+                            <NuxtLink :to="`/dashboard/admin/disbursements/view/${parent?.parentId}`">
                               <Button size="sm" variant="outline">View</Button>
                             </NuxtLink>
-
-                            <Button size="sm" variant="ghost" v-if="parent?.status === 'Pending'" class="min-w-24" @click.prevent="openConfirmReject">Reject</Button>
-                            <Button size="sm" variant="ghost" v-else-if="parent?.status === 'Verified'" class="min-w-24" @click.prevent="openConfirmSuspend">Suspend</Button>
-                            <Button size="sm" variant="outline" v-else-if="parent?.status === 'Suspended'" class="min-w-24" @click.prevent="openConfirmReactivate">Reactivate</Button>
-                            
                           </TableCell>
                       </TableRow>
                   </TableBody>

@@ -30,7 +30,7 @@ const navBar = [
   },
   {
     title: "Schools",
-    url: "/dashboard/admin/schools  ",
+    url: "/dashboard/admin/schools",
     icon: "teenyicons:school-outline",
     activeIcon: "teenyicons:school-solid",
   },
