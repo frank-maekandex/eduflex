@@ -1,16 +1,14 @@
 <script setup lang="ts">
 interface Props {
-  status: 'Ongoing' | 'Pending' | 'Active' | 'No Loan' | string
+  status: 'Accepted' | 'Rejected' | string
 }
 
 const props = defineProps<Props>()
 
 // Mapping status to colors
 const statusMap: Record<string, { dot: string; text: string }> = {
-  Ongoing: { dot: 'bg-emerald-500', text: 'text-emerald-500' },
-  Active: { dot: 'bg-emerald-500', text: 'text-emerald-500' },
-  Pending:    { dot: 'bg-[#FF9F2B]',   text: 'text-[#FF9F2B]' },
-  'No Loan':   { dot: 'bg-gray-100',   text: 'text-gray-100' },
+  Accepted: { dot: 'bg-emerald-500', text: 'text-emerald-500' },
+  Rejected:     { dot: 'bg-red-500',     text: 'text-red-500' },
 }
 
 // Fallback for unknown statuses

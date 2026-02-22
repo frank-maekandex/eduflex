@@ -40,9 +40,9 @@ defineExpose({
       <!-- Icon -->
       <div class="flex justify-center">
         <Icon
-            :name="icon || 'mdi:check'"
-            class="size-28"
-            :class="iconColor || 'text-primary'"
+          :name="icon || 'mdi:check'"
+          class="size-28"
+          :class="iconColor || 'text-primary'"
         />
       </div>
 

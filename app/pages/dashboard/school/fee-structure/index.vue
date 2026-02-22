@@ -65,16 +65,11 @@
 </template>
 
 <script lang="ts" setup>
-const searchTerm = ref('') 
 
   definePageMeta({
     layout: "school-dashboard",
     title: 'Fee Structure'
   })
-
-  const add = () => {
-    console.log('Fetching branches...')
-  }
 
   const currentPage = ref(1)
   const totalPages = ref(1000)

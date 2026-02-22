@@ -143,7 +143,7 @@ const verifications = [
 <template>
   <div class="flex flex-col gap-4">
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
-       <WalletCard 
+       <SmallWalletCard 
             title="Total Fees Received"
             :amount="displayCurrency(Number(500000), 'NGN')"
             icon-name="solar:banknote-2-bold"
@@ -151,7 +151,7 @@ const verifications = [
             icon-bg-class="bg-primary/10"
         />
 
-        <WalletCard 
+        <SmallWalletCard 
             title="Active  Students Loans"
             :amount="displayCurrency(Number(50000), 'NGN')"
             icon-name="solar:banknote-2-bold"
@@ -159,7 +159,7 @@ const verifications = [
             icon-bg-class="bg-red-100/80"
         />
 
-        <WalletCard 
+        <SmallWalletCard 
             title="Pending Disbursements"
             amount="Nov 30, 2025"
             icon-name="lets-icons:date-range-fill" 
@@ -167,7 +167,7 @@ const verifications = [
             icon-bg-class="bg-orange-100/80"
         />
 
-        <WalletCard 
+        <SmallWalletCard 
             title="Total Enrolled Students"
             amount="4"
             icon-name="fluent:hat-graduation-20-filled"

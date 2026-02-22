@@ -1,37 +1,30 @@
 <template>
   <div className="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
-    <ParentTitle title="Student List" desc="You have five pending student verification">
-      <Search 
-        v-model="searchTerm" 
-        placeholder="Search Name"
-        class="bg-background" 
-      />
-    </ParentTitle>
+    <ParentTitle title="Student List" desc="Here is the details of the students registered by this parent" />
 
     <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
         <Table>
             <TableHeader>
                 <TableRow className="bg-background text-left">
                     <TableHead className="capitalize p-3 text-gray-100 font-semibold">Student Name</TableHead>
+                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Age</TableHead>
+                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>School</TableHead>
                     <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Class</TableHead>
-                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Gender</TableHead>
-                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Term</TableHead>
-                    <TableHead className="capitalize p-3 text-gray-100 font-semibold">Added By</TableHead>
                     <TableHead className="capitalize p-3 text-gray-100 font-semibold">Status</TableHead>
+                    <TableHead className="capitalize p-3 text-gray-100 font-semibold">Loan Amount</TableHead>
                     <TableHead className="capitalize p-3 text-gray-100 font-semibold">Action</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
-                <TableRow v-for="student in students" :key="student?.id">
-                    <TableCell class="capitalize"> {{ ReduceTextLength(student?.name, 40) }}</TableCell>
-                    <TableCell class="capitalize">{{ student?.class }}</TableCell>
-                    <TableCell class="capitalize"> {{ student?.gender }}</TableCell>
-                    <TableCell class="capitalize"> {{ student?.term }}</TableCell>
-                    <TableCell class="capitalize"> {{ ReduceTextLength(student?.added_by, 40) }}</TableCell>
-                    <TableCell class="capitalize"><VerificationStatus :status="student.status" /></TableCell>
-                    <TableCell class="capitalize flex flex-row items-center gap-4">
-                      <SchoolModalVerifyStudent :student="student" />
-                      <SchoolModalViewStudent :student="student" />
+                <TableRow v-for="children in childrens" :key="children?.id">
+                    <TableCell class="capitalize"> {{ ReduceTextLength(children?.name, 40) }}</TableCell>
+                    <TableCell class="capitalize"> {{ children?.age }}</TableCell>
+                    <TableCell class="capitalize"> {{ ReduceTextLength(children?.school, 40) }}</TableCell>
+                    <TableCell class="capitalize">{{ children?.class }}</TableCell>
+                    <TableCell class="capitalize"><LoanStatus :status="children?.loanStatus" /></TableCell>
+                    <TableCell class="capitalize">{{ displayCurrency(Number(children?.loanAmount), 'NGN') }}</TableCell>
+                    <TableCell class="capitalize">
+                      <AdminModalViewStudent :children="children" />
                     </TableCell>
                 </TableRow>
             </TableBody>
@@ -55,11 +48,10 @@
 </template>
 
 <script lang="ts" setup>
-const searchTerm = ref('') 
 
   definePageMeta({
-    layout: "school-dashboard",
-    title: 'My Students'
+    layout: "admin-dashboard",
+    title: 'Student List'
   })
 
   const add = () => {
@@ -76,17 +68,14 @@ const searchTerm = ref('')
     // Fetch new data here based on the page
   }
 
-  const students = [
+  const childrens = [
     {
       "id": "std_001",
       "name": "David Michael",
       "age": "10yrs",
-      "gender": "Male",
-      "term": "Second",
-      "added_by": "Michael Owodunmi",
       "school": "Sunrise Academy",
       "class": "JSS 1",
-      "status": "Verified",
+      "loanStatus": "Ongoing",
       "loanAmount": 240000,
       "date": "22 Oct 2025",
     },
@@ -94,12 +83,9 @@ const searchTerm = ref('')
       "id": "std_002",
       "name": "Blessing Michael",
       "age": "14yrs",
-      "gender": "Male",
-      "term": "Second",
-      "added_by": "Michael Owodunmi",
       "school": "Victory High School",
       "class": "JSS 1",
-      "status": "Pending",
+      "loanStatus": "Pending",
       "loanAmount": 180000,
       "date": "22 Oct 2025",
     },
@@ -107,12 +93,9 @@ const searchTerm = ref('')
       "id": "std_003",
       "name": "Samuel Michael",
       "age": "11yrs",
-      "gender": "Male",
-      "term": "Second",
-      "added_by": "Michael Owodunmi",
       "school": "Harmony Primary School",
       "class": "JSS 1",
-      "status": "Verified",
+      "loanStatus": "No Loan",
       "loanAmount": 180000,
       "date": "22 Oct 2025",
     },
@@ -120,12 +103,9 @@ const searchTerm = ref('')
       "id": "std_004",
       "name": "Peace Michael",
       "age": "11yrs",
-      "gender": "Male",
-      "term": "Second",
-      "added_by": "Michael Owodunmi",
       "school": "Harmony Primary School",
       "class": "JSS 1",
-      "status": "Pending",
+      "loanStatus": "No Loan",
       "loanAmount": 180000,
       "date": "22 Oct 2025",
     }

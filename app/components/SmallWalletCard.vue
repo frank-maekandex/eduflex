@@ -14,17 +14,17 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <Card class="bg-white p-4 rounded-2xl flex items-center gap-4 border-none h-[105px]">
-        <div class="size-14 rounded-xl flex items-center justify-center" :class="iconBgClass">
+    <Card class="bg-white px-3 py-4 rounded-xl flex items-center gap-2 border-none">
+        <div class="size-10 rounded-lg flex items-center justify-center" :class="iconBgClass">
             <Icon 
                 :name="iconName" 
-                class="size-7" 
+                class="size-5" 
                 :class="iconColorClass"
             />
         </div>
         <div>
-            <h3 class="text-xl font-bold text-black">{{ amount }}</h3>
-            <p class="text-sm text-gray-100">{{ title }}</p>
+            <h3 class="font-bold text-black">{{ amount }}</h3>
+            <p class="text-[10px] text-gray-100">{{ title }}</p>
         </div>
     </Card>
 </template>
