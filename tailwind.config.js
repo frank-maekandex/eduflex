@@ -7,7 +7,6 @@ export default {
         primary: "#1E3A8A",
         background: "#F8F8F8",
         gray: {
-          default: "",
           100: "#8F8F8F",
           border: "#D9D9D9"
         }

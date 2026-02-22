@@ -23,7 +23,7 @@ withDefaults(defineProps<Props>(), {
             />
         </div>
         <div>
-            <h3 class="font-bold text-black">{{ amount }}</h3>
+            <h3 class="font-bold text-black text-lg">{{ amount }}</h3>
             <p class="text-[10px] text-gray-100">{{ title }}</p>
         </div>
     </Card>
