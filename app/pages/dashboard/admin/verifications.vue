@@ -105,11 +105,6 @@ const parents = [
       <Card class="bg-white rounded-2xl p-6 border-none">
          
           <ParentTitle title="KYC Verification Center" desc="Centralized identity verification for all EduFlex users (BVN, NIN, CAC)" />
-            <!-- <Search 
-              v-model="searchTerm" 
-              placeholder="Search Name or ID"
-              class="bg-background" 
-            /> -->
 
           <div className="w-full min-h-[55vh] flex flex-col items-center justify-between overflow-x-auto">
               <Table>
