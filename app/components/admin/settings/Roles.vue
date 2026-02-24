@@ -57,7 +57,7 @@ const searchTerm = ref('')
 </script>
 
 <template>
-  <div class="w-full min-h-[55vh] flex flex-col">
+  <div class="w-full min-h-[58vh] flex flex-col">
     
     <div class="w-full mb-4 flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
         <div>

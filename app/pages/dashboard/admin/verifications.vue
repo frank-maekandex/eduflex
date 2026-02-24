@@ -9,6 +9,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+
+const activeTab = ref('parents')
 
 type LoanStatus = 'Pending' | 'Active' | 'Inactive'
 
@@ -106,34 +109,63 @@ const parents = [
          
           <ParentTitle title="KYC Verification Center" desc="Centralized identity verification for all EduFlex users (BVN, NIN, CAC)" />
 
-          <div className="w-full min-h-[55vh] flex flex-col items-center justify-between overflow-x-auto">
-              <Table>
-                  <TableHeader>
-                      <TableRow className="bg-background text-left">
-                          <TableHead className="capitalize p-3 text-gray-100 font-semibold">Ticket ID</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Type</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Owner</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Priority</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>SLA Timer</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
-                      </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                      <TableRow v-for="parent in parents" :key="parent?.ticketId">
-                          <TableCell class="capitalize"> {{ parent.ticketId }}</TableCell>
-                          <TableCell class="capitalize">{{ parent?.type}}</TableCell>
-                          <TableCell class="capitalize">{{ parent?.owner }}</TableCell>
-                          <TableCell class="capitalize"><SupportPriorityStatus :status="parent?.priority"/></TableCell>
-                          <TableCell class="capitalize"><SupportStatus :status="parent?.status"/></TableCell>
-                          <TableCell class="capitalize">{{ parent?.slaTimer }}</TableCell>
-                          <TableCell class="capitalize">
-                            <AdminModalViewSupportTicket />
-                          </TableCell>
-                      </TableRow>
-                  </TableBody>
-              </Table>
-          </div> 
+          <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
+            <Tabs v-model="activeTab" class="w-full">
+                <TabsList class="p-0 shadow-none w-full bg-transparent flex flex-col md:flex-row mb-6">
+            
+                    <TabsTrigger 
+                        value="parents" 
+                        class="flex-1 w-full py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
+                        :class="[
+                        activeTab === 'parents'
+                            ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-b-2 border-primary' 
+                            : 'text-gray-100 hover:bg-background'
+                        ]"
+                    >
+                        <span class="font-semibold text-base tracking-tight">
+                          Parents
+                        </span>
+                    </TabsTrigger>
+                    <TabsTrigger 
+                        value="guarantors" 
+                        class="flex-1 w-full py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
+                        :class="[
+                        activeTab === 'guarantors'
+                            ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-b-2 border-primary' 
+                            : 'text-gray-100 hover:bg-background'
+                        ]"
+                    >
+                        <span class="font-semibold text-base tracking-tight">
+                          Guarantors
+                        </span>
+                    </TabsTrigger>
+                    <TabsTrigger 
+                        value="schools" 
+                        class="flex-1 w-full py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
+                        :class="[
+                        activeTab === 'schools'
+                            ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-b-2 border-primary' 
+                            : 'text-gray-100 hover:bg-background'
+                        ]"
+                    >
+                        <span class="font-semibold text-base tracking-tight">
+                          Schools
+                        </span>
+                    </TabsTrigger>
+                </TabsList>
+            
+                <TabsContent value="parents">
+                  <AdminVerificationsParents />
+                </TabsContent>
+                <TabsContent value="guarantors">
+                  <AdminVerificationsGuarantors />
+                </TabsContent>
+                <TabsContent value="schools">
+                  <AdminVerificationsSchools />
+                </TabsContent>
+            </Tabs>
+          
+        </div>
       </Card>
     </div>
   </div>

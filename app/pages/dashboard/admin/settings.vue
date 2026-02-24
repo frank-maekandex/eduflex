@@ -4,11 +4,11 @@
 
     <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
         <Tabs v-model="activeTab" class="w-full">
-            <TabsList class="p-0 shadow-none w-full bg-transparent flex flex-row mb-6">
+            <TabsList class="p-0 shadow-none w-full bg-transparent flex flex-col md:flex-row mb-6">
         
                 <TabsTrigger 
                     value="role_management" 
-                    class="flex-1 py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
+                    class="flex-1 w-full py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
                     :class="[
                     activeTab === 'role_management'
                         ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-b-2 border-primary' 
@@ -21,7 +21,7 @@
                 </TabsTrigger>
                 <TabsTrigger 
                     value="admin_users" 
-                    class="flex-1 py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
+                    class="flex-1 w-full py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
                     :class="[
                     activeTab === 'admin_users'
                         ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-b-2 border-primary' 
@@ -34,7 +34,7 @@
                 </TabsTrigger>
                 <TabsTrigger 
                     value="platform_settings" 
-                    class="flex-1 py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
+                    class="flex-1 w-full py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
                     :class="[
                     activeTab === 'platform_settings'
                         ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-b-2 border-primary' 
@@ -47,7 +47,7 @@
                 </TabsTrigger>
                 <TabsTrigger 
                     value="integration_settings" 
-                    class="flex-1 py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
+                    class="flex-1 w-full py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
                     :class="[
                     activeTab === 'integration_settings'
                         ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-b-2 border-primary' 
@@ -60,7 +60,7 @@
                 </TabsTrigger>
                 <TabsTrigger 
                     value="security" 
-                    class="flex-1 py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
+                    class="flex-1 w-full py-4 px-6 shadow-none justify-center rounded-none flex items-center gap-2 border-b border-gray-border data-[state=active]:bg-muted"
                     :class="[
                     activeTab === 'security'
                         ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white border-b-2 border-primary' 
