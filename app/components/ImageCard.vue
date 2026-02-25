@@ -1,12 +1,12 @@
 <template>
-  <div class="relative w-full h-[800px] mb-64"> 
+  <div class="relative w-full h-[300px] md:h-[800px] mb-64"> 
     
-    <div class="h-full w-full overflow-hidden rounded-5xl">
-        <NuxtImg 
-          :src="imageSrc" 
-          alt="Background" 
-          class="h-full w-full object-cover object-top"
-        />
+    <div class="h-full w-full overflow-hidden rounded-3xl md:rounded-5xl">
+      <NuxtImg 
+        :src="imageSrc" 
+        alt="Background" 
+        class="h-full w-full object-cover object-top"
+      />
     </div>
 
     <div class="absolute right-4 lg:right-10 -bottom-32 flex flex-col items-center p-6 sm:p-0 z-10">

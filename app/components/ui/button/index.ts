@@ -8,7 +8,7 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-white shadow hover:bg-primary/90",
+        default: "bg-primary text-white hover:bg-primary/90",
         destructive:
           "border border-gray-border text-gray-100 hover:bg-gray-border/20",
         outline:
@@ -17,6 +17,7 @@ export const buttonVariants = cva(
           "bg-black text-white shadow-sm hover:bg-black/80",
         ghost: "border border-red-600 bg-white text-red-600 shadow-sm hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        overlay: "bg-white text-primary hover:bg-white/90",
       },
       size: {
         "default": "h-9 px-7 py-5",

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-[550px] rounded-5xl overflow-hidden mt-2 mb-28">
+  <div class="relative w-full min-h-[300px] md:min-h-[550px] rounded-3xl md:rounded-5xl overflow-hidden mt-2 mb-28">
     <!-- Background image -->
     <NuxtImg
       placeholder
@@ -18,7 +18,7 @@
         Pay school fees easily, get instant school payments, and grow trust with lenders.
       </p>
       <NuxtLink to="/onboarding" class="w-fit">
-        <Button variant="destructive">
+        <Button variant="overlay">
           Get Started
         </Button>
       </NuxtLink>
