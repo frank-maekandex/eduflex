@@ -1,9 +1,8 @@
 <template>
-  <div class="max-w-6xl w-full mx-auto">
     <Swiper
       :modules="modules"
       :slides-per-view="1"
-      :pagination="{ clickable: true }"
+      :pagination="false"
       :autoplay="{
         delay: 4000,
         disableOnInteraction: false
@@ -35,7 +34,6 @@
         </div>
       </SwiperSlide>
     </Swiper>
-  </div>
 </template>
 
 <script lang="ts">
@@ -50,19 +48,19 @@ export default {
   setup() {
     const slides = [
       {
-        image: '/hero.png',
+        image: '/hero1.png',
         title: 'Pay School Fees Flexibly, Not Painfully.',
         description:
           "Ease your child’s education journey with simple, stress-free.",
       },
       {
-        image: '/hero.png',
+        image: '/hero2.png',
         title: 'Pay School Fees Flexibly, Not Painfully.',
         description:
           "Ease your child’s education journey with simple, stress-free.",
       },
       {
-        image: '/hero.png',
+        image: '/hero3.png',
         title: 'Pay School Fees Flexibly, Not Painfully.',
         description:
           "Ease your child’s education journey with simple, stress-free.",
