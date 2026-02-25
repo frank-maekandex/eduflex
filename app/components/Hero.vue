@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-[300px] md:h-[550px] rounded-3xl md:rounded-5xl overflow-hidden mt-2 mb-28">
+  <div class="relative w-full h-[300px] md:h-[550px] rounded-3xl md:rounded-5xl overflow-hidden mt-24 mb-28">
     <!-- Background image -->
     <NuxtImg
       placeholder

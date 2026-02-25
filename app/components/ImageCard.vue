@@ -9,8 +9,8 @@
       />
     </div>
 
-    <div class="absolute left-0 right-0 lg:left-auto lg:right-10 -bottom-64 md:-bottom-32 flex flex-col items-center px-2 z-10">
-      <div class="w-full max-w-lg rounded-2xl md:rounded-4xl bg-white p-4 md:p-8 sm:p-12">
+    <div class="absolute left-0 right-0 lg:left-auto lg:right-10 -bottom-60 md:-bottom-32 flex flex-col items-center px-2 z-10">
+      <div class="w-full max-w-lg rounded-2xl md:rounded-4xl bg-white p-6 md:p-8 sm:p-12">
         <h2 class="mb-1 text-xl md:text-4xl font-bold text-black">{{ title }}</h2>
         <p class="mb-6 text-base md:text-lg font-medium text-gray-100">{{ subtitle }}</p>
 

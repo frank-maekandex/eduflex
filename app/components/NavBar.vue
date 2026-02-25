@@ -2,6 +2,7 @@
 import { Menu, X } from 'lucide-vue-next'
 
 const isOpen = ref(false)
+const scrolled = ref(false)
 
 const openMenu = () => {
   isOpen.value = true
@@ -12,11 +13,30 @@ const closeMenu = () => {
   isOpen.value = false
   document.body.style.overflow = ''
 }
+
+// Scroll effect
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 20 // triggers when scrolled 20px
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
 </script>
 
 <template>
   <div>
-    <header class="h-20 flex items-center relative z-50">
+    <header
+      :class="[
+        'w-full h-20 flex items-center z-50 fixed top-0 transition-all duration-300',
+        scrolled ? 'bg-background border border-gray-border' : 'bg-transparent'
+      ]"
+    >
       <nav class="my_container w-full mx-auto flex items-center justify-between">
         <Logo color-class="text-primary" size-class="text-2xl" />
         <ul class="hidden md:flex gap-6">
@@ -47,7 +67,7 @@ const closeMenu = () => {
     <transition name="fade">
       <div
         v-if="isOpen"
-        class="fixed inset-0 bg-black/40 z-40 md:hidden"
+        class="fixed inset-0 bg-black/40 z-50 md:hidden"
         @click="closeMenu"
       />
     </transition>
@@ -56,10 +76,10 @@ const closeMenu = () => {
     <transition name="slide">
       <header
         v-if="isOpen"
-        class="fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-xl md:hidden flex flex-col"
+        class="fixed top-0 left-0 h-full w-72 bg-background z-50 shadow-xl md:hidden flex flex-col"
       >
         <!-- Drawer Header -->
-        <div class="flex items-center justify-between p-6 border-b border-gray-border">
+        <div class="flex items-center justify-between p-6 h-20 border-b border-gray-border">
           <Logo color-class="text-primary" size-class="text-xl" />
           <button @click="closeMenu">
             <X :size="24" />
