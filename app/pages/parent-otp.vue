@@ -11,7 +11,7 @@ definePageMeta({
     <div class="flex float-left">
       <Logo color-class="text-primary" size-class="text-2xl" />
     </div>
-    <div class="flex-1 flex w-full max-w-[800px] mx-auto items-center justify-center flex-col gap-32">
+    <div class="flex-1 flex w-full max-w-[800px] mx-auto items-center justify-center flex-col gap-32 p-2">
       <FormsParentOtp />
     </div>
   </div>
