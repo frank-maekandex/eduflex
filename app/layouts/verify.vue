@@ -11,10 +11,10 @@
               <div v-for="(item, index) in sections" :key="index" class="flex gap-4 justify-end">
                     
                 <div class="pt-1 text-right flex-1">
-                  <h3 :class="['font-bold text-lg leading-tight', getTitleColor(item.id)]">
+                  <h3 :class="['font-bold text-lg leading-tight', isActive(index) ? 'text-primary' : 'text-black']">
                     {{ item.section }}
                   </h3>
-                  <p :class="['text-sm font-medium mt-0.5', getDescColor(item.id)]">
+                  <p :class="['text-sm font-medium mt-0.5', isActive(index) ? 'text-gray-600' : 'text-gray-100']">
                     {{ item.desc }}
                   </p>
                 </div>
@@ -23,14 +23,14 @@
                     <span 
                         :class="[
                         'flex size-10 items-center justify-center rounded-full transition-all duration-300',
-                        isCurrent(index) ? 'bg-primary' : 'bg-background'
+                        isCurrent(index) || isActive(index) ? 'bg-primary' : 'bg-background'
                         ]"
                     >
                         <Icon 
                         :name="item.iconName" 
                         :class="[
                             'size-5 transition-colors',
-                            isCurrent(index) ? 'text-white' : 'text-gray-100'
+                            isCurrent(index) || isActive(index) ? 'text-white' : 'text-gray-100'
                         ]" 
                         />
                     </span>
@@ -52,7 +52,7 @@
         <div class="flex flex-col gap-4 ml-0 lg:ml-16">
           <div class="ml-auto">
             <ve-progress 
-              :progress="progressValue" 
+              :progress="progressValue"
               :size="80" 
               color="#1e3a8a"
               empty-color="#f1f5f9"
@@ -60,17 +60,25 @@
               :line="'butt'"
             >
               <span class="text-xl font-bold text-slate-900">
-              {{ currentStep }}/{{ totalSteps }}
+                {{ currentStep }}/{{ totalSteps }}
               </span>
             </ve-progress>
           </div>
           <div>
             <div>
-                <span class="flex size-10 items-center justify-center rounded-full bg-background mb-4">
+                <button @click="prevStep" class="flex size-10 items-center justify-center rounded-full bg-background mb-4">
                   <ChevronLeft class="text-gray-100" :size="25" />
-                </span>
+                </button>
                 <div>
-                  <slot />
+                  <transition name="fade" mode="out-in">
+                    <div :key="currentStep">
+                      <component
+                        :is="activeComponent"
+                        @next="nextStep"
+                        @prev="prevStep"
+                      />
+                    </div>
+                  </transition>
                 </div>
             </div>
           </div>
@@ -82,68 +90,74 @@
 
 <script setup lang="ts">
 import { ChevronLeft } from 'lucide-vue-next';
+import { ref, computed } from 'vue'
 
-const currentStep = ref(2);
-const totalSteps = 5;
+// Import your forms
+import IdentityForm from '@/components/verification/IdentityForm.vue'
+import EmploymentForm from '@/components/verification/EmploymentForm.vue'
+import ResidenceForm from '@/components/verification/ResidenceForm.vue'
+import BankForm from '@/components/verification/BankForm.vue'
+import GuarantorForm from '@/components/verification/GuarantorForm.vue'
 
-// Calculate progress percentage (e.g., 1/5 = 20%)
-const progressValue = computed(() => (currentStep.value / totalSteps) * 100);
+const currentStep = ref(1)
+const totalSteps = 5
 
-// In Nuxt, we track the current state based on the route or a global store
-const route = useRoute();
+const progressValue = computed(() => {
+  return (currentStep.value / totalSteps) * 100
+})
 
-// Example State Logic (You can replace this with your actual state management)
-// We use IDs instead of full strings for cleaner switch cases
+// SWITCH–CASE PATTERN
+const activeComponent = computed(() => {
+  switch (currentStep.value) {
+    case 1:
+      return IdentityForm
+    case 2:
+      return EmploymentForm
+    case 3:
+      return ResidenceForm
+    case 4:
+      return BankForm
+    case 5:
+      return GuarantorForm
+    default:
+      return IdentityForm
+  }
+})
+
+// Navigation
+const nextStep = () => {
+  if (currentStep.value < totalSteps) {
+    currentStep.value++
+  }
+}
+
+const prevStep = () => {
+  if (currentStep.value > 1) {
+    currentStep.value--
+  }
+}
+
 const sections = [
-  { id: 'identity', section: "BVN & NIN Validation", desc: "Enter your details", iconName: "material-symbols-light:sd-card" },
-  { id: 'employment', section: "Employment Information", desc: "Enter and upload", iconName: "flowbite:briefcase-solid" },
-  { id: 'residence', section: "Residential Address", desc: "Enter and upload", iconName: "si:home-fill"},
-  { id: 'bank', section: "Bank Details", desc: "Enter your details", iconName: "f7:creditcard-fill" },
-  { id: 'guarantor', section: "Guarantor Details", desc: "Enter details", iconName: "teenyicons:users-solid" }
+  { id: 1, section: "BVN & NIN Validation", desc: "Enter your details", iconName: "fa7-solid:id-card-clip" },
+  { id: 2, section: "Employment Information", desc: "Enter and upload", iconName: "flowbite:briefcase-solid" },
+  { id: 3, section: "Residential Address", desc: "Enter and upload", iconName: "si:home-fill"},
+  { id: 4, section: "Bank Details", desc: "Enter your details", iconName: "f7:creditcard-fill" },
+  { id: 5, section: "Guarantor Details", desc: "Enter details", iconName: "teenyicons:users-solid" }
 ];
+const isCompleted = (index: number) => index + 1 < currentStep.value
+const isCurrent = (index: number) => index + 1 === currentStep.value
+const isActive = (index: number) => index + 1 <= currentStep.value
 
-// Determine the current step index based on route name or meta
-// Example: if current page is /register/otp, currentStep is 2
-const currentStepIndex = computed(() => {
-  return route.meta.stepIndex as number || 0;
-});
-
-// Logic helpers
-const isCompleted = (index: number) => index < currentStepIndex.value;
-const isCurrent = (index: number) => index === currentStepIndex.value;
-
-// Color Logic
-const getFirstCircleColor = (id: string) => {
-  const index = sections.findIndex(s => s.id === id);
-  return isCurrent(index) ? "bg-blue-100" : "";
-};
-
-const getSecondCircleColor = (id: string) => {
-  const index = sections.findIndex(s => s.id === id);
-  if (isCurrent(index)) return "bg-blue-600 border-blue-600";
-  if (isCompleted(index)) return "bg-white border-blue-600";
-  return "bg-white border-slate-300";
-};
-
-const getThirdCircleColor = (id: string) => {
-  const index = sections.findIndex(s => s.id === id);
-  if (isCurrent(index)) return "bg-white";
-  if (isCompleted(index)) return "bg-blue-600";
-  return "bg-slate-300";
-};
-
-const getLineColor = (id: string) => {
-  const index = sections.findIndex(s => s.id === id);
-  return isCompleted(index) ? "bg-blue-600" : "bg-slate-200";
-};
-
-const getTitleColor = (id: string) => {
-  const index = sections.findIndex(s => s.id === id);
-  return (isCurrent(index) || isCompleted(index)) ? "text-blue-900" : "text-black";
-};
-
-const getDescColor = (id: string) => {
-  const index = sections.findIndex(s => s.id === id);
-  return (isCurrent(index) || isCompleted(index)) ? "text-slate-600" : "text-gray-100";
-};
 </script>
+
+
+<style scoped>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.25s ease;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+</style>

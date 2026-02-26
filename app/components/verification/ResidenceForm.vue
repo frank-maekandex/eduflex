@@ -1,15 +1,6 @@
 <script setup lang="ts">
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 
-const selectedFile = ref(null)
+const selectedFile = ref<File | null>(null)
 
 const handleFile = (event: any) => {
   const file = event.target.files[0]
@@ -30,29 +21,14 @@ const handleFile = (event: any) => {
     <FieldGroup>
         <div class="flex flex-col gap-1">
             <h1 class="text-2xl font-bold">
-                Enter your BVN or NIN
+                Upload Your Residential Address
             </h1>
         </div>
         <Field class="grid gap-1">
-            <FieldLabel for="bvn">
-              Select Verification Type
+            <FieldLabel for="address">
+                Address
             </FieldLabel>
-            <Select>
-                <SelectTrigger class="w-full">
-                    <SelectValue placeholder="Select a verification type" />
-                </SelectTrigger>
-                <SelectContent class="bg-white">
-                    <SelectGroup>
-                        <SelectLabel>Verification Types</SelectLabel>
-                        <SelectItem value="BVN">
-                            BVN
-                        </SelectItem>
-                        <SelectItem value="NIN">
-                            NIN
-                        </SelectItem>
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
+            <Input id="address" type="text" placeholder="Enter address here" />
         </Field>
         <FileUpload 
             label="Proof of Address (Light or Sewage)"
@@ -62,7 +38,7 @@ const handleFile = (event: any) => {
             desc="PDF, JPEG, PNG ≤ 2MB"
         />
         <Field class="max-w-72 mx-auto">
-            <Button type="submit">
+            <Button type="submit" @click="$emit('next')">
                 Continue
             </Button>
         </Field>
