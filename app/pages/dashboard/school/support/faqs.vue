@@ -14,7 +14,7 @@ definePageMeta({
 </script>
 
 <template>
-<div className="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
+<div class="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
     <TitleDesc title="Frequently Asked Questions" />
 
     <div>

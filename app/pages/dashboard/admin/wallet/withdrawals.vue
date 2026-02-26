@@ -122,19 +122,19 @@ const parents = [
 </script>
 
 <template>
-  <div className="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
+  <div class="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
     <ParentTitle title="Withdrawal Requests" desc="Monitor balances, transactions, withdrawals, and wallet activity" />
 
-    <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
+    <div class="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
         <Table>
           <TableHeader>
-              <TableRow className="bg-background text-left">
-                  <TableHead className="capitalize p-3 text-gray-100 font-semibold">Req ID</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>School</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Date</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Balance</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
+              <TableRow class="bg-background text-left">
+                  <TableHead class="capitalize p-3 text-gray-100 font-semibold">Req ID</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>School</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Date</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Balance</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
               </TableRow>
           </TableHeader>
           <TableBody>
@@ -155,8 +155,8 @@ const parents = [
           </TableBody>
       </Table>
 
-        <div className='flex gap-2 items-center justify-between w-full mt-10'>           
-          <div className='ml-auto'>
+        <div class='flex gap-2 items-center justify-between w-full mt-10'>           
+          <div class='ml-auto'>
             <AppPagination
               :total="totalPages"
               :items-per-page="10"

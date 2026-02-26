@@ -214,13 +214,13 @@ const verifications = [
                 </Button>
               </NuxtLink>
            </div>
-           <div className="w-full min-h-[50vh] flex flex-col items-center justify-between overflow-x-auto">
+           <div class="w-full min-h-[50vh] flex flex-col items-center justify-between overflow-x-auto">
                 <Table>
                     <TableHeader>
-                        <TableRow className="bg-background text-left">
-                            <TableHead className="capitalize p-3 text-gray-100 font-semibold">Description</TableHead>
-                            <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
-                            <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Date</TableHead>
+                        <TableRow class="bg-background text-left">
+                            <TableHead class="capitalize p-3 text-gray-100 font-semibold">Description</TableHead>
+                            <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
+                            <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Date</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -249,12 +249,12 @@ const verifications = [
                 </Button>
               </NuxtLink>
            </div>
-           <div className="w-full min-h-[50vh] flex flex-col items-center justify-between overflow-x-auto">
+           <div class="w-full min-h-[50vh] flex flex-col items-center justify-between overflow-x-auto">
                 <Table>
                     <TableHeader>
-                        <TableRow className="bg-background text-left">
-                            <TableHead className="capitalize p-3 text-gray-100 font-semibold">Student Name</TableHead>
-                            <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Added By</TableHead>
+                        <TableRow class="bg-background text-left">
+                            <TableHead class="capitalize p-3 text-gray-100 font-semibold">Student Name</TableHead>
+                            <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Added By</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

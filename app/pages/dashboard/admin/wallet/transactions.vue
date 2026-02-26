@@ -1,5 +1,5 @@
 <template>
-  <div className="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
+  <div class="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
     <ParentTitle title="Transactions (In/Out)" desc="Monitor balances, transactions, withdrawals, and wallet activity">
         <Search 
             v-model="searchTerm" 
@@ -8,16 +8,16 @@
         />
     </ParentTitle>
 
-    <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
+    <div class="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
         <Table>
             <TableHeader>
-                <TableRow className="bg-background text-left">
-                    <TableHead className="capitalize p-3 text-gray-100 font-semibold">TXN ID</TableHead>
-                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Wallet ID</TableHead>
-                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Type</TableHead>
-                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Description</TableHead>
-                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Balance</TableHead>
-                    <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
+                <TableRow class="bg-background text-left">
+                    <TableHead class="capitalize p-3 text-gray-100 font-semibold">TXN ID</TableHead>
+                    <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Wallet ID</TableHead>
+                    <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Type</TableHead>
+                    <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Description</TableHead>
+                    <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Balance</TableHead>
+                    <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -34,8 +34,8 @@
             </TableBody>
         </Table>
 
-        <div className='flex gap-2 items-center justify-between w-full mt-10'>           
-          <div className='ml-auto'>
+        <div class='flex gap-2 items-center justify-between w-full mt-10'>           
+          <div class='ml-auto'>
             <AppPagination
               :total="totalPages"
               :items-per-page="10"

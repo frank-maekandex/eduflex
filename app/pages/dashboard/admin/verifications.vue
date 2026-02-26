@@ -109,7 +109,7 @@ const parents = [
          
           <ParentTitle title="KYC Verification Center" desc="Centralized identity verification for all EduFlex users (BVN, NIN, CAC)" />
 
-          <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
+          <div class="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
             <Tabs v-model="activeTab" class="w-full">
                 <TabsList class="p-0 shadow-none w-full bg-transparent flex flex-col md:flex-row mb-6">
             

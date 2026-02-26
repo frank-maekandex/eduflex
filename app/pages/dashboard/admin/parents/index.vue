@@ -175,17 +175,17 @@ const parents = [
             />
           </ParentTitle>
 
-          <div className="w-full min-h-[55vh] flex flex-col items-center justify-between overflow-x-auto">
+          <div class="w-full min-h-[55vh] flex flex-col items-center justify-between overflow-x-auto">
               <Table>
                   <TableHeader>
-                      <TableRow className="bg-background text-left">
-                          <TableHead className="capitalize p-3 text-gray-100 font-semibold">Parent ID</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Full Name</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Date Joined</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Students</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Loan Status</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
+                      <TableRow class="bg-background text-left">
+                          <TableHead class="capitalize p-3 text-gray-100 font-semibold">Parent ID</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Full Name</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Date Joined</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Students</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Loan Status</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
                       </TableRow>
                   </TableHeader>
                   <TableBody>

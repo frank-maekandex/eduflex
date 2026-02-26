@@ -330,13 +330,13 @@ const verifications = [
                 </Button>
               </NuxtLink>
            </div>
-           <div className="w-full min-h-[40vh] flex flex-col items-center justify-between overflow-x-auto">
+           <div class="w-full min-h-[40vh] flex flex-col items-center justify-between overflow-x-auto">
                 <Table>
                     <TableHeader>
-                        <TableRow className="bg-background text-left">
-                            <TableHead className="capitalize p-3 text-gray-100 font-semibold">Description</TableHead>
-                            <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
-                            <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Date</TableHead>
+                        <TableRow class="bg-background text-left">
+                            <TableHead class="capitalize p-3 text-gray-100 font-semibold">Description</TableHead>
+                            <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Amount</TableHead>
+                            <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Date</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -360,13 +360,13 @@ const verifications = [
                   <p class="text-gray-100 text-sm">Schools with highest transactions via EduFlex</p>
               </div>
            </div>
-           <div className="w-full min-h-[40vh] flex flex-col items-center justify-between overflow-x-auto">
+           <div class="w-full min-h-[40vh] flex flex-col items-center justify-between overflow-x-auto">
                 <Table>
                     <TableHeader>
-                        <TableRow className="bg-background text-left">
-                            <TableHead className="capitalize p-3 text-gray-100 font-semibold">Rank</TableHead>
-                            <TableHead className="capitalize p-3 text-gray-100 font-semibold">School</TableHead>
-                            <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Volume</TableHead>
+                        <TableRow class="bg-background text-left">
+                            <TableHead class="capitalize p-3 text-gray-100 font-semibold">Rank</TableHead>
+                            <TableHead class="capitalize p-3 text-gray-100 font-semibold">School</TableHead>
+                            <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Volume</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>

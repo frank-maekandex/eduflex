@@ -125,8 +125,8 @@ const groupedNotifications = computed(() => {
       </div>
     </div>
 
-    <div className='flex gap-2 items-center justify-between w-full mt-10'>           
-        <div className='ml-auto'>
+    <div class='flex gap-2 items-center justify-between w-full mt-10'>           
+        <div class='ml-auto'>
             <AppPagination
                 :total="totalPages"
                 :items-per-page="10"

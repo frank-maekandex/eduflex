@@ -1,8 +1,8 @@
 <template>
-  <div className="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
+  <div class="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
     <ParentTitle title="System Configuration & Access Control" desc="Manage roles, permissions, and platform settings." />
 
-    <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
+    <div class="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
         <Tabs v-model="activeTab" class="w-full">
             <TabsList class="p-0 shadow-none w-full bg-transparent flex flex-col md:flex-row mb-6">
         

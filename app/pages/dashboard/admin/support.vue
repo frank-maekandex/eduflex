@@ -112,17 +112,17 @@ const parents = [
             />
           </ParentTitle>
 
-          <div className="w-full min-h-[55vh] flex flex-col items-center justify-between overflow-x-auto">
+          <div class="w-full min-h-[55vh] flex flex-col items-center justify-between overflow-x-auto">
               <Table>
                   <TableHeader>
-                      <TableRow className="bg-background text-left">
-                          <TableHead className="capitalize p-3 text-gray-100 font-semibold">Ticket ID</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Type</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Owner</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Priority</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>SLA Timer</TableHead>
-                          <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
+                      <TableRow class="bg-background text-left">
+                          <TableHead class="capitalize p-3 text-gray-100 font-semibold">Ticket ID</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Type</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Owner</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Priority</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>SLA Timer</TableHead>
+                          <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
                       </TableRow>
                   </TableHeader>
                   <TableBody>

@@ -68,16 +68,16 @@ const searchTerm = ref('')
         </div>
     </div>
 
-    <div className="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
+    <div class="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
         <Table>
             <TableHeader>
-              <TableRow className="bg-background text-left">
-                  <TableHead className="capitalize p-3 text-gray-100 font-semibold">ID</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Name</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Contact</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Auto Validation</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
-                  <TableHead className='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
+              <TableRow class="bg-background text-left">
+                  <TableHead class="capitalize p-3 text-gray-100 font-semibold">ID</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Name</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Contact</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Auto Validation</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Status</TableHead>
+                  <TableHead class='capitalize p-3 text-gray-100 font-semibold'>Action</TableHead>
               </TableRow>
           </TableHeader>
           <TableBody>
@@ -95,15 +95,15 @@ const searchTerm = ref('')
         </Table>
     </div>
 
-    <div className='flex gap-2 items-center justify-between w-full mt-10'>           
-        <div className='ml-auto'>
-        <AppPagination
+    <div class='flex gap-2 items-center justify-between w-full mt-10'>           
+        <div class='ml-auto'>
+          <AppPagination
             :total="totalPages"
             :items-per-page="10"
             :default-page="currentPage"
             :ellipsis-index="4"
             @update:page="handlePageChange"
-        />
+          />
         </div>
     </div>
   </div>
