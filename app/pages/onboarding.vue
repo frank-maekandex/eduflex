@@ -6,10 +6,10 @@
     <div class="flex-1 flex w-full max-w-[800px] mx-auto items-center justify-center flex-col gap-32">
       <div>
         <div class="mb-10">
-          <h2 class="mb-1 text-5xl font-bold text-black text-center">Welcome to EduFlex!</h2>
-          <p class="mb-6 text-lg text-gray-100 text-center">We are glad to have you here! Which of these are you?</p>
+          <h2 class="mb-1 text-3xl md:text-5xl font-bold text-black text-center">Welcome to EduFlex!</h2>
+          <p class="mb-6 text-base md:text-lg text-gray-100 text-center">We are glad to have you here! Which of these are you?</p>
         </div>
-        <div class="flex flex-row gap-6">
+        <div class="flex flex-col md:flex-row gap-6">
           <OnboardCard  
             title="Parent/Guardian"
             subtitle="Apply for flexible school fee financing and manage your child’s payments."

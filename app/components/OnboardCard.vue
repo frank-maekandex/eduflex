@@ -21,11 +21,11 @@ defineProps({
   <Card class="w-full bg-white flex flex-col items-center">
     <CardHeader class="pb-2">
         <div class="flex size-20 items-center justify-center mx-auto rounded-full bg-background">
-            <NuxtImg 
-                :src="imageSrc" 
-                alt="Background" 
-                class="size-12"
-            />
+          <NuxtImg 
+              :src="imageSrc" 
+              alt="Background" 
+              class="size-12"
+          />
         </div>
       <CardTitle class="text-center text-2xl">{{ title }}</CardTitle>
     </CardHeader>
