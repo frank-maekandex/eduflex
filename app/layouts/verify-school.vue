@@ -4,8 +4,8 @@
         <div class="hidden lg:flex flex-row items-start">
           <div class="flex flex-col gap-4 justify-center items-center w-full">
             <div class="mb-6">
-              <h2 class="font-bold text-4xl">Verify Your Identity</h2>
-              <p class="text-gray-100">Verify identity to continue</p>
+              <h2 class="font-bold text-4xl">School Verification</h2>
+              <p class="text-gray-100">Verify school identity to continue</p>
             </div>
             <Card class="flex flex-col shadow-none border-none bg-transparent w-full gap-1 mr-0 lg:mr-20">
               <div v-for="(item, index) in sections" :key="index" class="flex gap-4 justify-end">
@@ -51,8 +51,8 @@
         </div>
         <div class="flex flex-col gap-4 ml-0 lg:ml-16">
           <div class="lg:hidden mb-6 flex flex-col items-center">
-            <h2 class="font-bold text-xl text-center">Verify Your Identity</h2>
-            <p class="text-gray-100 text-center">Verify identity to continue</p>
+            <h2 class="font-bold text-xl text-center">School Verification</h2>
+            <p class="text-gray-100 text-center">Verify school identity to continue</p>
           </div>
           <div class="flex flex-row items-start gap-4">
             <div class="lg:hidden mb-4">
@@ -107,18 +107,14 @@ import { ChevronLeft } from 'lucide-vue-next';
 import { ref, computed } from 'vue'
 
 // Import your forms
-import IdentityForm from '@/components/verification/IdentityForm.vue'
-import EmploymentForm from '@/components/verification/EmploymentForm.vue'
-import ResidenceForm from '@/components/verification/ResidenceForm.vue'
-import BankForm from '@/components/verification/BankForm.vue'
-import GuarantorForm from '@/components/verification/GuarantorForm.vue'
+import SchoolForm from '@/components/school-verification/SchoolForm.vue'
+import RepresentativeForm from '@/components/school-verification/RepresentativeForm.vue'
+import BankForm from '@/components/school-verification/BankForm.vue'
 
 const sections = [
-  { id: 1, section: "BVN & NIN Validation", desc: "Enter your details", iconName: "fa7-solid:id-card-clip" },
-  { id: 2, section: "Employment Information", desc: "Enter and upload", iconName: "flowbite:briefcase-solid" },
-  { id: 3, section: "Residential Address", desc: "Enter and upload", iconName: "si:home-fill"},
-  { id: 4, section: "Bank Details", desc: "Enter your details", iconName: "f7:creditcard-fill" },
-  { id: 5, section: "Guarantor Details", desc: "Enter details", iconName: "teenyicons:users-solid" }
+  { id: 1, section: "School Information", desc: "Enter details", iconName: "fa7-solid:id-card-clip" },
+  { id: 2, section: "School Representative Details", desc: "Enter Details", iconName: "solar:user-check-bold" },
+  { id: 3, section: "Bank Details", desc: "Enter details", iconName: "fluent:edit-16-filled" }
 ];
 
 const currentStep = ref(1)
@@ -132,17 +128,13 @@ const progressValue = computed(() => {
 const activeComponent = computed(() => {
   switch (currentStep.value) {
     case 1:
-      return IdentityForm
+      return SchoolForm
     case 2:
-      return EmploymentForm
+      return RepresentativeForm
     case 3:
-      return ResidenceForm
-    case 4:
       return BankForm
-    case 5:
-      return GuarantorForm
     default:
-      return IdentityForm
+      return SchoolForm
   }
 })
 

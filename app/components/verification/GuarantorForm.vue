@@ -56,7 +56,7 @@ const closeModal = () => {
         iconColor="text-primary"
     >
         <NuxtLink to="/dashboard/parent">
-            <Button class="w-full rounded-full" @click="closeModal">
+            <Button class="w-full rounded-full">
                 Go To Dashboard
             </Button>
         </NuxtLink>

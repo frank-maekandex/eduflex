@@ -9,6 +9,8 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
+const selectedIdType = ref<'NIN' | 'BVN' | null>(null)
+
 </script>
 
 <template>
@@ -22,7 +24,7 @@ import {
             <FieldLabel for="bvn">
               Select Verification Type
             </FieldLabel>
-            <Select>
+            <Select v-model="selectedIdType">
                 <SelectTrigger class="w-full">
                     <SelectValue placeholder="Select a verification type" />
                 </SelectTrigger>
@@ -38,6 +40,18 @@ import {
                     </SelectGroup>
                 </SelectContent>
             </Select>
+        </Field>
+        <Field class="grid gap-1" v-if="selectedIdType === 'NIN'">
+            <FieldLabel for="nin">
+                NIN
+            </FieldLabel>
+            <Input id="nin" type="number" placeholder="Enter 11-Digits NIN" />
+        </Field>
+        <Field class="grid gap-1" v-if="selectedIdType === 'BVN'">
+            <FieldLabel for="bvn">
+                BVN
+            </FieldLabel>
+            <Input id="bvn" type="number" placeholder="Enter 11-Digits BVN" />
         </Field>
         <Field class="max-w-72 mx-auto">
             <Button type="submit" @click="$emit('next')">
