@@ -55,7 +55,7 @@ const submit = () => {
               <template #default="{ slots }">
                 <div v-for="(slot, idx) in slots" :key="idx"
                     :class="[
-                    'size-8 sm:size-12 border border-gray-border rounded-md sm:rounded-lg flex items-center justify-center text-xl font-bold transition-all',
+                    'size-9 sm:size-12 border border-gray-border rounded-md sm:rounded-lg flex items-center justify-center text-xl font-bold transition-all',
                     slot.isActive ? 'border-primary ring-2 ring-primary/20' : 'border-input text-muted-foreground'
                     ]"
                 >
