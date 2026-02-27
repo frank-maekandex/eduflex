@@ -23,7 +23,7 @@ const onComplete = (value: string) => {
 }
 
 const submit = () => {
-  navigateTo('/dashboard/parent', {
+  navigateTo('/verify-parent', {
     replace: true, // Prevents user from going back to the form
     external: false // Set to true if navigating to a different website
   })
@@ -50,19 +50,19 @@ const submit = () => {
                 v-model="otpValue"
                 :maxlength="6"
                 @complete="onComplete"
-                container-class="flex items-center gap-2"
+                container-class="flex items-center justify-center gap-2"
             >
-                <template #default="{ slots }">
+              <template #default="{ slots }">
                 <div v-for="(slot, idx) in slots" :key="idx"
                     :class="[
-                    'size-14 border border-gray-border rounded-lg flex items-center justify-center text-xl font-bold transition-all',
+                    'size-8 sm:size-12 border border-gray-border rounded-md sm:rounded-lg flex items-center justify-center text-xl font-bold transition-all',
                     slot.isActive ? 'border-primary ring-2 ring-primary/20' : 'border-input text-muted-foreground'
                     ]"
                 >
                     {{ slot.char }}
                     <div v-if="slot.isActive && !slot.char" class="w-0.5 h-6 bg-primary animate-pulse" />
                 </div>
-                </template>
+              </template>
             </OTPInput>
             <FieldDescription class="text-center">
               Enter the 6-digit code sent to your email.

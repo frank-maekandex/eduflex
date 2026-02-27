@@ -111,9 +111,11 @@ const handleFile = (file: File | null) => {
             </Button>
         </Field>
         <Field class="max-w-72 mx-auto">
-            <Button type="submit" variant="outline">
-                Verify Later
-            </Button>
+            <NuxtLink to="/dashboard/school">
+                <Button type="submit" variant="outline" class="w-full">
+                    Verify Later
+                </Button>
+            </NuxtLink>
         </Field>
     </FieldGroup>
 </template>

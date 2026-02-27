@@ -66,10 +66,11 @@
             <div class="ml-auto">
               <ve-progress 
                 :progress="progressValue"
-                :size="80" 
+                :size="70" 
                 color="#1e3a8a"
                 empty-color="#f1f5f9"
-                :thickness="6"
+                :thickness="8"
+                empty-thickness="8"
                 :line="'butt'"
               >
                 <span class="text-xl font-bold text-slate-900">
