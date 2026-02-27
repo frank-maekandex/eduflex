@@ -34,7 +34,7 @@ onUnmounted(() => {
     <header
       :class="[
         'w-full h-20 flex items-center z-50 fixed top-0 transition-all duration-300',
-        scrolled ? 'bg-background border border-gray-border' : 'bg-transparent'
+        scrolled ? 'bg-background border-b border-gray-border' : 'bg-transparent'
       ]"
     >
       <nav class="my_container w-full mx-auto flex items-center justify-between">
