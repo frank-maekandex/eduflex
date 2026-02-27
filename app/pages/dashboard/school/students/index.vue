@@ -8,8 +8,8 @@
       />
     </ParentTitle>
 
-    <div class="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
-        <Table>
+    <div class="overflow-x-auto">
+        <Table class="min-w-[1000px]">
             <TableHeader>
                 <TableRow class="bg-background text-left">
                     <TableHead class="capitalize p-3 text-gray-100 font-semibold">Student Name</TableHead>
@@ -23,13 +23,13 @@
             </TableHeader>
             <TableBody>
                 <TableRow v-for="student in students" :key="student?.id">
-                    <TableCell class="capitalize w-48"> {{ ReduceTextLength(student?.name, 40) }}</TableCell>
-                    <TableCell class="capitalize w-48">{{ student?.class }}</TableCell>
-                    <TableCell class="capitalize w-48"> {{ student?.gender }}</TableCell>
-                    <TableCell class="capitalize w-48"> {{ student?.term }}</TableCell>
-                    <TableCell class="capitalize w-48"> {{ ReduceTextLength(student?.added_by, 40) }}</TableCell>
-                    <TableCell class="capitalize w-48"><VerificationStatus :status="student.status" /></TableCell>
-                    <TableCell class="capitalize w-48 flex flex-row items-center gap-4">
+                    <TableCell class="capitalize"> {{ ReduceTextLength(student?.name, 40) }}</TableCell>
+                    <TableCell class="capitalize">{{ student?.class }}</TableCell>
+                    <TableCell class="capitalize"> {{ student?.gender }}</TableCell>
+                    <TableCell class="capitalize"> {{ student?.term }}</TableCell>
+                    <TableCell class="capitalize"> {{ ReduceTextLength(student?.added_by, 40) }}</TableCell>
+                    <TableCell class="capitalize"><VerificationStatus :status="student.status" /></TableCell>
+                    <TableCell class="capitalize flex flex-row items-center gap-4">
                       <SchoolModalVerifyStudent :student="student" />
                       <SchoolModalViewStudent :student="student" />
                     </TableCell>
