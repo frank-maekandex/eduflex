@@ -15,7 +15,7 @@ import {
 <template>
   <SidebarProvider>
     <AdminSidebar />
-    <SidebarInset class="bg-background mx-2 lg:mx-6">
+    <SidebarInset class="bg-background mx-2 lg:mx-6 overflow-hidden">
       <header class="bg-white sticky top-0 flex h-20 shrink-0 items-center gap-2 z-50 px-4 rounded-b-xl">
         <SidebarTrigger class="-ml-1 text-black" />
         <Separator orientation="vertical" class="mr-2 w- h-4 bg-background" />

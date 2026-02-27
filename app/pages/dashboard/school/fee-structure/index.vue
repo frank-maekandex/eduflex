@@ -1,7 +1,7 @@
 <template>
   <div class="w-full min-h-[82vh] flex flex-col flex-1 bg-white rounded-xl p-4 md:p-6">
     <ParentTitle title="Fee Structures" desc="Manage your fee structures.">
-        <div class="flex flex-row items-center gap-2">
+        <div class="flex flex-col flex-start lg:flex-row lg:items-center gap-2">
             <NuxtLink to="/dashboard/school/fee-structure/upload">
                 <Button variant="outline" class="w-full">
                   Upload Fee Structure

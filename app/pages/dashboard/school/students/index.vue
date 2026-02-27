@@ -8,8 +8,8 @@
       />
     </ParentTitle>
 
-    <div class="overflow-x-auto">
-        <Table class="min-w-[1000px]">
+    <div class="w-full flex-1 flex flex-col items-center justify-between overflow-x-auto">
+        <Table>
             <TableHeader>
                 <TableRow class="bg-background text-left">
                     <TableHead class="capitalize p-3 text-gray-100 font-semibold">Student Name</TableHead>
